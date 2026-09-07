@@ -10,21 +10,6 @@
   "theme_color": "#121413",
   "dir": "rtl",
   "lang": "fa",
-  "categories": ["productivity"],
-  "screenshots": [
-    {
-      "src": "./saber-app-icon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "./saber-app-icon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
-  ],
   "icons": [
     {
       "src": "./saber-app-icon.png",
