@@ -11,6 +11,11 @@
   "dir": "rtl",
   "lang": "fa",
   "icons": [
-    {"src":"./saber-app-icon.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "./saber-app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
