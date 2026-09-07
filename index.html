@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#121413">
+    <meta name="description" content="سامانه جامع مدیریت پایگاه">
+    <meta name="keywords" content="سامانه, صابر, بسیج, مدیریت">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/png" href="./saber-app-icon.png">
+    <link rel="apple-touch-icon" href="./saber-app-icon.png">
+    <title>سامانه صابر بسیج</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #121413;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "IRANSans", "Tahoma", "Verdana";
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #9ca3af;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .feature {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            font-size: 14px;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .install-info {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .offline-status {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #10b981;
+            margin-right: 6px;
+            margin-left: 6px;
+        }
+        
+        .status-indicator.offline {
+            background-color: #ef4444;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./saber-app-icon.png" alt="سامانه صابر" class="logo">
+        
+        <h1>سامانه صابر بسیج</h1>
+        <p class="subtitle">سامانه جامع مدیریت پایگاه</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-title">📱 نصب بر روی گوشی</div>
+                <div class="feature-desc">نصب سریع و سهل بر روی تمام دستگاه‌ها</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">🔒 امن و محفوظ</div>
+                <div class="feature-desc">HTTPS و رمزگذاری کامل داده‌ها</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">⚡ سرعت بالا</div>
+                <div class="feature-desc">کارایی بهینه شده و بارگذاری فوری</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">🌐 حالت آفلاین</div>
+                <div class="feature-desc">کار کردن بدون اتصال اینترنت</div>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button class="btn btn-primary" id="installBtn" style="display: none;">نصب بر روی صفحه خانگی</button>
+            <a href="javascript:void(0)" class="btn btn-secondary" id="shareBtn">اشتراک‌گذاری</a>
+        </div>
+        
+        <div class="install-info" id="installInfo" style="display: none;">
+            <strong>نحوه نصب:</strong><br>
+            برای نصب این برنامه، روی دکمه بالا کلیک کنید یا از منوی مرورگر (⋮) گزینه "نصب برنامه" را انتخاب کنید.
+        </div>
+        
+        <div class="offline-status">
+            وضعیت: <span class="status-indicator" id="statusIndicator"></span><span id="statusText">آنلاین</span>
+        </div>
+    </div>
+    
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').then(registration => {
+                console.log('Service Worker registered successfully:', registration);
+            }).catch(error => {
+                console.log('Service Worker registration failed:', error);
+            });
+        }
+        
+        // PWA Install Prompt
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+        const installInfo = document.getElementById('installInfo');
+        
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            installBtn.style.display = 'inline-block';
+            installInfo.style.display = 'block';
+        });
+        
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                deferredPrompt = null;
+                installBtn.style.display = 'none';
+                installInfo.style.display = 'none';
+            }
+        });
+        
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            installBtn.style.display = 'none';
+            installInfo.style.display = 'none';
+        });
+        
+        // Share functionality
+        const shareBtn = document.getElementById('shareBtn');
+        shareBtn.addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'سامانه صابر بسیج',
+                        text: 'سامانه جامع مدیریت پایگاه',
+                        url: window.location.href
+                    });
+                } catch (err) {
+                    console.log('Error sharing:', err);
+                }
+            } else {
+                alert('متأسفانه اشتراک‌گذاری در این مرورگر پشتیبانی نمی‌شود');
+            }
+        });
+        
+        // Online/Offline Status
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        
+        function updateStatus() {
+            if (navigator.onLine) {
+                statusIndicator.classList.remove('offline');
+                statusText.textContent = 'آنلاین';
+            } else {
+                statusIndicator.classList.add('offline');
+                statusText.textContent = 'آفلاین';
+            }
+        }
+        
+        window.addEventListener('online', updateStatus);
+        window.addEventListener('offline', updateStatus);
+        updateStatus();
+    </script>
+</body>
+</html>
