@@ -1,21 +1,14 @@
 {
-  "name": "سامانه صابر بسیج",
-  "short_name": "سامانه صابر",
-  "description": "سامانه جامع مدیریت پایگاه",
-  "start_url": "./index.html",
-  "scope": "./",
-  "display": "standalone",
-  "orientation": "any",
-  "background_color": "#121413",
-  "theme_color": "#121413",
-  "dir": "rtl",
-  "lang": "fa",
-  "icons": [
-    {
-      "src": "./saber-app-icon.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+  "name":"سامانه صابر بسیج",
+  "short_name":"سامانه صابر",
+  "description":"سامانه جامع مدیریت پایگاه",
+  "start_url":"./index.html",
+  "scope":"./",
+  "display":"standalone",
+  "orientation":"any",
+  "background_color":"#121413",
+  "theme_color":"#121413",
+  "dir":"rtl",
+  "lang":"fa",
+  "icons":[{"src":"./saber-app-icon.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
 }
