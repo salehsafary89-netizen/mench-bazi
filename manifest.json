@@ -1,7 +1,7 @@
 {
-  "name": "سامانه صابر | Saber Management Site Windows",
+  "name": "سامانه صابر بسیج",
   "short_name": "سامانه صابر",
-  "description": "نسخه Windows سامانه صابر",
+  "description": "سامانه جامع مدیریت پایگاه",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -12,8 +12,8 @@
   "lang": "fa",
   "icons": [
     {
-      "src": "./assets/saber-app-icon.png",
-      "sizes": "any",
+      "src": "./saber-app-icon.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
