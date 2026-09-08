@@ -1,14 +1,21 @@
 {
-  "name":"سامانه صابر بسیج",
-  "short_name":"سامانه صابر",
-  "description":"سامانه جامع مدیریت پایگاه",
-  "start_url":"./index.html",
-  "scope":"./",
-  "display":"standalone",
-  "orientation":"any",
-  "background_color":"#121413",
-  "theme_color":"#121413",
-  "dir":"rtl",
-  "lang":"fa",
-  "icons":[{"src":"./saber-app-icon.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
+  "name": "سامانه صابر | Saber Management Site Windows",
+  "short_name": "سامانه صابر",
+  "description": "نسخه Windows سامانه صابر",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#121413",
+  "theme_color": "#121413",
+  "dir": "rtl",
+  "lang": "fa",
+  "icons": [
+    {
+      "src": "./assets/saber-app-icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
 }
