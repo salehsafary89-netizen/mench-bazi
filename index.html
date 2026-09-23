@@ -13,22 +13,15 @@
 <title>منچ رابطه‌ای</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-:root{
-  --bg:#0a0812;--panel:#14101c;--panel2:#1c1628;--line:#2e2640;
-  --text:#f4f0fa;--muted:#9a90a8;--pink:#ff5a9a;--pink-soft:#ff5a9a28;
-  --gold:#f0c675;--gold-dim:#f0c67522;--blue:#7aa8ff;--violet:#a78bfa;
-}
+:root{--bg:#0a0812;--panel:#14101c;--panel2:#1c1628;--line:#2e2640;--text:#f4f0fa;--muted:#9a90a8;--pink:#ff5a9a;--pink-soft:#ff5a9a28;--gold:#f0c675;--gold-dim:#f0c67522;--blue:#7aa8ff}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  min-height:100vh;
-  background:radial-gradient(ellipse at 70% -10%,#2a1535 0%,transparent 45%),radial-gradient(ellipse at 20% 100%,#151028 0%,transparent 40%),#0a0812;
-  color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;overflow-x:hidden;
-}
+body{min-height:100vh;background:radial-gradient(ellipse at 70% -10%,#2a1535 0%,transparent 45%),radial-gradient(ellipse at 20% 100%,#151028 0%,transparent 40%),#0a0812;color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
-.screen{display:none;min-height:100vh;width:min(480px,100%);margin:0 auto;padding:22px 16px;flex-direction:column}
+.screen{display:none;min-height:100vh;width:min(480px,100%);margin:0 auto;padding:22px 16px 48px;flex-direction:column;position:relative}
 .screen.active{display:flex}
+.credit{position:fixed;bottom:8px;left:0;right:0;text-align:center;font-size:10px;color:#5a5470;z-index:60;pointer-events:none;letter-spacing:.3px}
 #license-screen{justify-content:center;align-items:center;text-align:center;gap:26px}
-.logo-big{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#ff5a9a 10%,#f0c675 50%,#a78bfa 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 18px #ff5a9a33)}
+.logo-big{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#ff5a9a 10%,#f0c675 50%,#a78bfa 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .logo-sub{color:var(--muted);font-size:.92em;margin-top:-12px}
 .license-box{width:100%;background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:26px 20px;box-shadow:0 24px 60px #0008}
 .license-box label{display:block;font-size:.88em;color:var(--muted);margin-bottom:10px;text-align:right}
@@ -58,22 +51,12 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .player-card .name{font-size:.9em;font-weight:600;margin-bottom:2px}
 .player-card .gender-tag{font-size:10px;color:var(--muted);margin-bottom:8px}
 .yard{display:flex;justify-content:center;gap:6px;margin-bottom:6px;min-height:28px}
-.yard-slot{
-  width:26px;height:26px;border-radius:8px;border:1.5px dashed #3a3050;
-  background:#0c0a14;display:flex;align-items:center;justify-content:center;
-  position:relative;transition:.2s;
-}
+.yard-slot{width:26px;height:26px;border-radius:8px;border:1.5px dashed #3a3050;background:#0c0a14;display:flex;align-items:center;justify-content:center;position:relative}
 .yard-slot.filled{border-style:solid;border-color:#4a4060}
-.yard-slot .mini{
-  width:14px;height:14px;border-radius:50%;
-  box-shadow:0 0 8px currentColor;
-}
+.yard-slot .mini{width:14px;height:14px;border-radius:50%;box-shadow:0 0 8px currentColor}
 .yard-slot .mini.p0{background:linear-gradient(145deg,#ff7ab0,var(--pink));color:var(--pink)}
 .yard-slot .mini.p1{background:linear-gradient(145deg,#9ec0ff,var(--blue));color:var(--blue)}
-.yard-slot.selectable{
-  border-color:var(--gold);box-shadow:0 0 12px #f0c67555;cursor:pointer;
-  animation:pulse-slot 1s ease infinite;
-}
+.yard-slot.selectable{border-color:var(--gold);box-shadow:0 0 12px #f0c67555;cursor:pointer;animation:pulse-slot 1s ease infinite}
 @keyframes pulse-slot{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
 .player-card .hint{font-size:10px;color:var(--muted);min-height:14px}
 .board-wrap{background:linear-gradient(160deg,var(--panel),#120e1a);border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:14px}
@@ -82,11 +65,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .cell.special{background:linear-gradient(145deg,#1e1430,#16101f);border-color:#4a3060;color:#c8a0d0;font-weight:600}
 .cell.special::after{content:"✦";position:absolute;top:1px;left:2px;font-size:6px;opacity:.55;color:var(--gold)}
 .cell.flash{background:#2a1a40!important;border-color:var(--pink)!important;box-shadow:0 0 12px #ff5a9a44}
-.token{
-  width:12px;height:12px;border-radius:50%;position:absolute;z-index:2;
-  box-shadow:0 0 10px currentColor,0 0 3px #fff8;cursor:pointer;
-  transition:transform .2s ease, box-shadow .2s;
-}
+.token{width:12px;height:12px;border-radius:50%;position:absolute;z-index:2;box-shadow:0 0 10px currentColor,0 0 3px #fff8;cursor:pointer;transition:transform .2s ease,box-shadow .2s}
 .token.p0{background:linear-gradient(145deg,#ff7ab0,var(--pink));color:var(--pink)}
 .token.p1{background:linear-gradient(145deg,#9ec0ff,var(--blue));color:var(--blue)}
 .token.selectable{box-shadow:0 0 0 2px var(--gold),0 0 14px #f0c67588;animation:pulse-tok .9s ease infinite;z-index:5}
@@ -96,31 +75,10 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .dice-section{text-align:center;margin-bottom:12px}
 .turn-text{color:var(--muted);font-size:12px;margin-bottom:10px}
 .dice-wrap{display:flex;justify-content:center;margin-bottom:12px}
-.dice-face{
-  width:92px;height:92px;border-radius:18px;
-  background:linear-gradient(145deg,#2e2840,#161220);
-  border:2px solid #5a5070;
-  box-shadow:0 14px 36px #000a, inset 0 2px 0 #ffffff14, inset 0 -2px 0 #0005;
-  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
-  padding:14px;gap:0;position:relative;
-}
+.dice-face{width:92px;height:92px;border-radius:18px;background:linear-gradient(145deg,#2e2840,#161220);border:2px solid #5a5070;box-shadow:0 14px 36px #000a,inset 0 2px 0 #ffffff14;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:14px}
 .dice-face.shake{animation:dice-shake .9s cubic-bezier(.36,.07,.19,.97)}
-@keyframes dice-shake{
-  0%{transform:rotate(0) scale(1)}
-  12%{transform:rotate(-15deg) scale(1.08)}
-  24%{transform:rotate(13deg) scale(1.06)}
-  36%{transform:rotate(-11deg) scale(1.1)}
-  48%{transform:rotate(10deg) scale(1.05)}
-  60%{transform:rotate(-7deg) scale(1.08)}
-  72%{transform:rotate(5deg) scale(1.03)}
-  100%{transform:rotate(0) scale(1)}
-}
-.pip{
-  width:11px;height:11px;border-radius:50%;
-  background:radial-gradient(circle at 35% 35%,#fff,#e8d5a0 60%,#c9a84c);
-  box-shadow:0 0 6px #f0c67566;
-  margin:auto;opacity:0;transform:scale(.5);transition:opacity .15s,transform .15s;
-}
+@keyframes dice-shake{0%{transform:rotate(0) scale(1)}12%{transform:rotate(-15deg) scale(1.08)}24%{transform:rotate(13deg) scale(1.06)}36%{transform:rotate(-11deg) scale(1.1)}48%{transform:rotate(10deg) scale(1.05)}60%{transform:rotate(-7deg) scale(1.08)}72%{transform:rotate(5deg) scale(1.03)}100%{transform:rotate(0) scale(1)}}
+.pip{width:11px;height:11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#e8d5a0 60%,#c9a84c);box-shadow:0 0 6px #f0c67566;margin:auto;opacity:0;transform:scale(.5);transition:opacity .15s,transform .15s}
 .pip.on{opacity:1;transform:scale(1)}
 .btn-dice{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,#ff5a9a,#e8894a);color:#fff;font-weight:700;font-size:1.05em;box-shadow:0 8px 22px #ff5a9a40}
 .btn-dice:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
@@ -128,19 +86,25 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .note{text-align:center;color:#5a5470;font-size:10px;line-height:1.6;margin-top:6px}
 .overlay{position:fixed;inset:0;background:#06040add;display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
 .overlay.show{display:flex}
-.scroll{width:min(420px,100%);background:linear-gradient(180deg,#f7eedc,#e6d4b0);color:#1a1510;border-radius:10px;padding:24px 20px;box-shadow:0 28px 70px #000c;transform-origin:top center;max-height:88vh;overflow-y:auto}
+.scroll{width:min(440px,100%);background:linear-gradient(180deg,#f7eedc,#e6d4b0);color:#1a1510;border-radius:10px;padding:22px 18px;box-shadow:0 28px 70px #000c;transform-origin:top center;max-height:90vh;overflow-y:auto}
 .scroll.open{animation:unroll .75s cubic-bezier(.2,.8,.2,1)}
 @keyframes unroll{0%{transform:scaleY(.06);opacity:.25}65%{transform:scaleY(1.03);opacity:1}100%{transform:scaleY(1)}}
-.scroll .tag{font-size:11px;color:#7a6a50;letter-spacing:1px;margin-bottom:8px}
-.scroll h2{font-size:1.2em;margin-bottom:14px;color:#3a2a1a}
-.gender-box{background:rgba(0,0,0,.055);border-radius:8px;padding:12px 13px;margin-bottom:10px;border-right:3px solid transparent}
-.gender-box.girl{border-right-color:#ff5a9a}
-.gender-box.boy{border-right-color:#7aa8ff}
-.gender-box .label{font-size:12px;font-weight:700;margin-bottom:5px}
-.gender-box.girl .label{color:#c43a6a}
-.gender-box.boy .label{color:#3a6ac4}
-.gender-box .text{font-size:14px;line-height:1.85}
-.btn-close{width:100%;margin-top:14px;padding:12px;border-radius:8px;background:#1a1510;color:#f5ebd8;font-weight:600}
+.scroll .tag{font-size:11px;color:#7a6a50;letter-spacing:1px;margin-bottom:6px}
+.scroll h2{font-size:1.15em;margin-bottom:12px;color:#3a2a1a}
+.zone-tag{display:inline-block;font-size:10px;padding:3px 8px;border-radius:99px;margin-bottom:10px;background:#0001}
+.challenge-block{background:rgba(0,0,0,.05);border-radius:8px;padding:12px;margin-bottom:12px;border-right:3px solid transparent}
+.challenge-block.girl{border-right-color:#ff5a9a}
+.challenge-block.boy{border-right-color:#7aa8ff}
+.challenge-block .who{font-size:12px;font-weight:700;margin-bottom:8px}
+.challenge-block.girl .who{color:#c43a6a}
+.challenge-block.boy .who{color:#3a6ac4}
+.opt{display:flex;gap:8px;align-items:flex-start;padding:8px 10px;border-radius:8px;border:1px solid #0002;margin-bottom:6px;cursor:pointer;background:#fff6;transition:.15s}
+.opt:hover{background:#fff9}
+.opt.picked{border-color:#8b5a2b;background:#f0e0c0}
+.opt input{margin-top:3px;accent-color:#8b1a3a}
+.opt span{font-size:13.5px;line-height:1.7;flex:1}
+.btn-close{width:100%;margin-top:8px;padding:12px;border-radius:8px;background:#1a1510;color:#f5ebd8;font-weight:600}
+.btn-close:disabled{opacity:.4;cursor:not-allowed}
 .winner-box{width:min(400px,100%);background:linear-gradient(160deg,#1a1525,#0c0a12);border:1px solid #3a3050;border-radius:20px;padding:36px 24px;text-align:center;box-shadow:0 30px 80px #000c;animation:win-in .6s ease}
 @keyframes win-in{from{opacity:0;transform:translateY(24px) scale(.95)}to{opacity:1;transform:none}}
 .winner-box .emoji{font-size:2.6em;margin-bottom:10px}
@@ -150,6 +114,8 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 </style>
 </head>
 <body>
+<div class="credit">سازنده صالح صفری</div>
+
 <div id="license-screen" class="screen active">
   <div class="logo-big">منچ رابطه‌ای</div>
   <div class="logo-sub">نسخه خصوصی • مثبت ۱۸</div>
@@ -160,6 +126,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
     <div class="license-error" id="licenseError"></div>
   </div>
 </div>
+
 <div id="setup-screen" class="screen">
   <h2>آماده‌سازی بازیکنان</h2>
   <div class="setup-sub">اسم و جنسیت هر نفر را مشخص کنید</div>
@@ -181,10 +148,11 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
   </div>
   <button class="btn-main" id="startBtn" style="margin-top:8px">شروع بازی</button>
 </div>
+
 <div id="game-screen" class="screen">
   <div class="game-header">
     <div class="brand">منچ رابطه‌ای</div>
-    <div class="badge">۴ مهره / ۱۰۰</div>
+    <div class="badge">۴ مهره / چالش‌پراکنده</div>
   </div>
   <div class="players">
     <div class="player-card active" id="card0">
@@ -213,17 +181,30 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
     </div>
     <button class="btn-dice" id="rollBtn">پرتاب تاس</button>
   </div>
-  <div class="note">با ۶ و کلیک روی مهرهٔ داخل خانه، مهره بیرون می‌آید (خودکار نیست)<br>اگر مهره بیرون داری با ۶ می‌توانی بین آوردن از خانه یا حرکت انتخاب کنی</div>
+  <div class="note">با ۶ و کلیک روی مهرهٔ داخل خانه، مهره بیرون می‌آید<br>چالش‌ها پراکنده‌اند • هر نفر یک حکم از دو گزینه را انتخاب می‌کند</div>
 </div>
+
 <div class="overlay" id="challengeOverlay">
   <div class="scroll" id="scroll">
     <div class="tag">CHALLENGE // خانه ویژه</div>
     <h2 id="challengeTitle">حکم این خونه</h2>
-    <div class="gender-box girl"><div class="label">برای دختر</div><div class="text" id="girlText"></div></div>
-    <div class="gender-box boy"><div class="label">برای پسر</div><div class="text" id="boyText"></div></div>
-    <button class="btn-close" id="closeBtn">چالش انجام شد</button>
+    <div class="zone-tag" id="zoneTag"></div>
+
+    <div class="challenge-block girl">
+      <div class="who">برای دختر — یکی را انتخاب کن</div>
+      <label class="opt" id="gOpt0"><input type="radio" name="girlPick" value="0"><span id="gText0"></span></label>
+      <label class="opt" id="gOpt1"><input type="radio" name="girlPick" value="1"><span id="gText1"></span></label>
+    </div>
+    <div class="challenge-block boy">
+      <div class="who">برای پسر — یکی را انتخاب کن</div>
+      <label class="opt" id="bOpt0"><input type="radio" name="boyPick" value="0"><span id="bText0"></span></label>
+      <label class="opt" id="bOpt1"><input type="radio" name="boyPick" value="1"><span id="bText1"></span></label>
+    </div>
+
+    <button class="btn-close" id="closeBtn" disabled>هر دو انتخاب کردند — ادامه</button>
   </div>
 </div>
+
 <div class="overlay" id="winnerOverlay">
   <div class="winner-box">
     <div class="emoji">✦</div>
@@ -232,92 +213,96 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
     <button class="btn-restart" id="restartBtn">بازی دوباره</button>
   </div>
 </div>
+
 <script>
-const STEP_MS = 800;
+const STEP_MS = 600;
 const FINISH = 100;
-/* pip layout for dice 1-6 (3x3 grid indices) */
-const PIP_MAP = {
-  1:[4],
-  2:[0,8],
-  3:[0,4,8],
-  4:[0,2,6,8],
-  5:[0,2,4,6,8],
-  6:[0,2,3,5,6,8]
-};
+const CHALLENGE_HOUSES = new Set([4,9,13,18,22,27,31,36,40,45,49,54,58,63,67,72,76,81,85,90,94,99,100]);
+const PIP_MAP = {1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 
 let audioCtx=null;
 function ensureAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume()}
-function tone(freq,dur,type,vol,slide){
-  try{
-    ensureAudio();
-    const o=audioCtx.createOscillator(), g=audioCtx.createGain();
-    o.type=type||"square";
-    o.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    if(slide) o.frequency.exponentialRampToValueAtTime(slide, audioCtx.currentTime+dur);
-    g.gain.setValueAtTime(vol||0.07, audioCtx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime+dur);
-    o.connect(g); g.connect(audioCtx.destination);
-    o.start(); o.stop(audioCtx.currentTime+dur);
-  }catch(e){}
-}
-function sfxDiceTick(){ tone(140+Math.random()*180, 0.028, "square", 0.05); }
-function sfxDiceStop(){ tone(260, 0.08, "triangle", 0.09, 380); setTimeout(()=>tone(420,0.1,"sine",0.06),70); }
-function sfxStep(){ tone(380, 0.05, "triangle", 0.04, 520); }
-function sfxSelect(){ tone(600, 0.06, "sine", 0.05); }
-function sfxChallenge(){ tone(500,0.08,"sine",0.07); setTimeout(()=>tone(720,0.12,"sine",0.06),90); }
-function sfxWin(){ [523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,0.15,"sine",0.075), i*120)); }
+function tone(freq,dur,type,vol,slide){try{ensureAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type||"square";o.frequency.setValueAtTime(freq,audioCtx.currentTime);if(slide)o.frequency.exponentialRampToValueAtTime(slide,audioCtx.currentTime+dur);g.gain.setValueAtTime(vol||0.07,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function sfxDiceTick(){tone(140+Math.random()*180,0.028,"square",0.05)}
+function sfxDiceStop(){tone(260,0.08,"triangle",0.09,380);setTimeout(()=>tone(420,0.1,"sine",0.06),70)}
+function sfxStep(){tone(380,0.05,"triangle",0.04,520)}
+function sfxSelect(){tone(600,0.06,"sine",0.05)}
+function sfxChallenge(){tone(500,0.08,"sine",0.07);setTimeout(()=>tone(720,0.12,"sine",0.06),90)}
+function sfxWin(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,0.15,"sine",0.075),i*120))}
 
 const LICENSE_CODE="0970185839";
 function normalizeDigits(str){const p="۰۱۲۳۴۵۶۷۸۹",a="٠١٢٣٤٥٦٧٨٩";return str.replace(/[۰-۹]/g,d=>p.indexOf(d)).replace(/[٠-٩]/g,d=>a.indexOf(d)).replace(/\D/g,"")}
 document.getElementById("licenseBtn").addEventListener("click",checkLicense);
 document.getElementById("licenseInput").addEventListener("keydown",e=>{if(e.key==="Enter")checkLicense()});
-function checkLicense(){
-  ensureAudio();
-  const input=document.getElementById("licenseInput"),err=document.getElementById("licenseError");
-  if(normalizeDigits(input.value.trim())===LICENSE_CODE){
-    err.textContent=""; document.getElementById("license-screen").classList.remove("active");
-    document.getElementById("setup-screen").classList.add("active");
-  }else{ input.classList.add("error"); err.textContent="کد لایسنس نادرست است"; setTimeout(()=>input.classList.remove("error"),400); }
-}
+function checkLicense(){ensureAudio();const input=document.getElementById("licenseInput"),err=document.getElementById("licenseError");if(normalizeDigits(input.value.trim())===LICENSE_CODE){err.textContent="";document.getElementById("license-screen").classList.remove("active");document.getElementById("setup-screen").classList.add("active")}else{input.classList.add("error");err.textContent="کد لایسنس نادرست است";setTimeout(()=>input.classList.remove("error"),400)}}
 
 const genders=["girl","boy"];
-document.querySelectorAll(".gender-btn").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const p=+btn.dataset.player, g=btn.dataset.gender; genders[p]=g;
-    document.querySelectorAll(`.gender-btn[data-player="${p}"]`).forEach(b=>b.classList.remove("selected-girl","selected-boy"));
-    btn.classList.add(g==="girl"?"selected-girl":"selected-boy");
-  });
-});
-document.getElementById("startBtn").addEventListener("click",()=>{
-  ensureAudio();
-  names[0]=document.getElementById("name1").value.trim()||"بازیکن ۱";
-  names[1]=document.getElementById("name2").value.trim()||"بازیکن ۲";
-  document.getElementById("displayName0").textContent=names[0];
-  document.getElementById("displayName1").textContent=names[1];
-  document.getElementById("displayGender0").textContent=genders[0]==="girl"?"دختر":"پسر";
-  document.getElementById("displayGender1").textContent=genders[1]==="girl"?"دختر":"پسر";
-  document.getElementById("setup-screen").classList.remove("active");
-  document.getElementById("game-screen").classList.add("active");
-  renderAll();
-});
+document.querySelectorAll(".gender-btn").forEach(btn=>{btn.addEventListener("click",()=>{const p=+btn.dataset.player,g=btn.dataset.gender;genders[p]=g;document.querySelectorAll(`.gender-btn[data-player="${p}"]`).forEach(b=>b.classList.remove("selected-girl","selected-boy"));btn.classList.add(g==="girl"?"selected-girl":"selected-boy")})});
+document.getElementById("startBtn").addEventListener("click",()=>{ensureAudio();names[0]=document.getElementById("name1").value.trim()||"بازیکن ۱";names[1]=document.getElementById("name2").value.trim()||"بازیکن ۲";document.getElementById("displayName0").textContent=names[0];document.getElementById("displayName1").textContent=names[1];document.getElementById("displayGender0").textContent=genders[0]==="girl"?"دختر":"پسر";document.getElementById("displayGender1").textContent=genders[1]==="girl"?"دختر":"پسر";document.getElementById("setup-screen").classList.remove("active");document.getElementById("game-screen").classList.add("active");renderAll()});
 
-/* Challenges: level by house, text random within level — order of levels preserved */
-const girlChallenges={
-  soft:["۳۰ ثانیه فقط به پسر نگاه کن و لبخند بزن، بعد یه تعریف کوچیک ازش بگو.","دستت رو آروم روی شونه یا بازوی پسر بذار و ۱۵ ثانیه نگه دار.","یه بوسه خیلی ملایم روی گونه یا پیشانی پسر بزن.","دستات رو دور کمر پسر ببر و یه بوسه آروم روی لبش بزن.","دستت رو زیر لباس پسر روی سینه‌ش یا شکمش ببر و آروم نوازش کن."],
-  medium:["یکی از دکمه‌های لباس پسر رو باز کن و جای لخت‌شده رو ببوس.","با دستت قسمت جنسی پسر رو از روی لباس نوازش کن تا سفت بشه.","لباس بالای تنت رو دربیار و بذار پسر سینه‌هات رو ببینه و نوازش کنه.","روی پای پسر بشین و بدنت رو بهش بمال (هنوز با لباس).","با زبونت گردن و ترقوه پسر رو لیس بزن و آروم گاز بگیر."],
-  hard:["با دست یا دهنت آلت پسر رو تا لب‌لبه ارگاسم ببر، ولی نذار تموم کنه.","لباس زیرت رو دربیار و بذار پسر با انگشت یا زبون تحریک‌ت کنه.","روی پسر سوار شو (بدون دخول) و بدنت رو به آلتش بمال.","بذار پسر کنترل کامل بدنت رو برای ۲ دقیقه به دست بگیره (با رضایت).","آلت پسر رو بین سینه‌هات بذار و بالا پایین ببر."],
-  final:["رابطه کامل. هر پوزیشنی که دوست داری انتخاب کن و بذار پسر گایت کنه.","بذار پسر از پشت یا روبرو کامل داخل بشه و با سرعتی که دوست داره پیش بره.","خودت رو کامل در اختیار پسر بذار و بذار هر جور که می‌خواد تموم کنه."]
+/* --- Challenges: 3 zones, 2 options each gender --- */
+const CH = {
+  soft: {
+    girl: [
+      "۳۰ ثانیه فقط نگاه و لبخند، بعد یک تعریف کوتاه بگو.",
+      "دستت را ۱۵ ثانیه روی شانه یا بازوی او بگذار.",
+      "یک بوسه خیلی ملایم روی گونه یا پیشانی.",
+      "دست‌ها دور کمر؛ یک بوسه کوتاه روی لب (بدون فشار).",
+      "از روی لباس، کمر یا شانه را آروم نوازش کن."
+    ],
+    boy: [
+      "۳۰ ثانیه فقط نگاه و لبخند، بعد یک تعریف کوتاه بگو.",
+      "دستت را ۱۵ ثانیه روی شانه یا بازوی او بگذار.",
+      "یک بوسه خیلی ملایم روی گونه یا پیشانی.",
+      "دست‌ها دور کمر؛ یک بوسه کوتاه روی لب (بدون فشار).",
+      "از روی لباس، کمر یا شانه را آروم نوازش کن."
+    ]
+  },
+  medium: {
+    girl: [
+      "یک دکمه از لباس او را باز کن و همان جا را ببوس.",
+      "از روی لباس، بدنش را نزدیک‌تر نوازش کن تا واکنش نشان دهد.",
+      "لباس بالایی خودت را کمی کنار بزن و بگذار لمست کند.",
+      "روی پایش بنشین (با لباس) و بدنت را آروم به او نزدیک کن.",
+      "گردن و ترقوه‌اش را با لب و زبان خیلی آروم نوازش کن."
+    ],
+    boy: [
+      "یک دکمه از لباس او را باز کن و همان جا را ببوس.",
+      "از روی لباس سینه‌ها یا کمرش را آروم فشار بده و نوازش کن.",
+      "لباس بالایی خودت را کنار بزن و بگذار لمست کند.",
+      "محکم بغلش کن و بدنت را به او بچسبان.",
+      "گردن و گوشش را با لب و زبان خیلی آروم نوازش کن."
+    ]
+  },
+  hard: {
+    girl: [
+      "با دست یا دهان او را تا نزدیک اوج ببر، اما تمام نکن.",
+      "لباس زیر را کنار بگذار و بگذار با دست یا دهان تحریک‌ت کند.",
+      "روی او سوار شو بدون دخول و بدنت را به او بمال.",
+      "برای دو دقیقه کنترل بدنت را با رضایت به او بسپار.",
+      "رابطه کامل؛ پوزیشن و سرعت را با هم توافق کنید."
+    ],
+    boy: [
+      "با دست یا دهان او را تا نزدیک اوج ببر، اما تمام نکن.",
+      "لباس زیر او را کنار بگذار و با دست یا دهان تحریکش کن.",
+      "او را روی خودت بنشان بدون دخول و بدنش را به خودت بمال.",
+      "برای دو دقیقه با رضایت، کنترل بدنش را بگیر.",
+      "رابطه کامل؛ پوزیشن و سرعت را با هم توافق کنید."
+    ]
+  }
 };
-const boyChallenges={
-  soft:["۳۰ ثانیه فقط به دختر نگاه کن و لبخند بزن، بعد یه تعریف کوچیک ازش بگو.","دستت رو آروم روی شونه یا بازوی دختر بذار و ۱۵ ثانیه نگه دار.","یه بوسه خیلی ملایم روی گونه یا پیشانی دختر بزن.","دستات رو دور کمر دختر ببر و یه بوسه آروم روی لبش بزن.","دستت رو زیر لباس دختر روی سینه‌ش یا شکمش ببر و آروم نوازش کن."],
-  medium:["یکی از دکمه‌های لباس دختر رو باز کن و جای لخت‌شده رو ببوس.","با دستت سینه‌های دختر رو از روی لباس نوازش کن و آروم فشار بده.","لباس بالای تنت رو دربیار و بذار دختر بدنت رو لمس کنه.","دختر رو بغل کن و بدنت رو محکم بهش بچسبون.","با زبونت گردن و گوش دختر رو لیس بزن و آروم گاز بگیر."],
-  hard:["با دست یا دهنت قسمت جنسی دختر رو تا لب‌لبه ارگاسم ببر، ولی نذار تموم کنه.","لباس زیر دختر رو دربیار و با انگشت یا زبون تحریک‌ش کن.","دختر رو روی خودت بنشون (بدون دخول) و بدنش رو به آلتت بمال.","برای ۲ دقیقه کنترل کامل بدن دختر رو به دست بگیر (با رضایت).","آلتت رو بین ران‌های دختر بذار و آروم بمال."],
-  final:["رابطه کامل. هر پوزیشنی که دوست داری انتخاب کن و دختر رو کامل بگای.","از پشت یا روبرو کامل داخل شو و با سرعتی که هر دو دوست دارید پیش برو.","دختر رو کامل در اختیار بگیر و هر جور که می‌خوای تموم کن."]
-};
-function getLevel(h){if(h<=30)return"soft";if(h<=60)return"medium";if(h<=90)return"hard";return"final"}
-function pickRandom(a){return a[Math.floor(Math.random()*a.length)]}
 
-/* pieces[player][0..3] = 0 home, 1..100 on board */
+function getZone(house){
+  if(house<=33) return {key:"soft", label:"بخش ۱ — ملایم"};
+  if(house<=66) return {key:"medium", label:"بخش ۲ — متوسط"};
+  return {key:"hard", label:"بخش ۳ — تند"};
+}
+function pickTwo(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+  return [a[0],a[1]];
+}
+
 let names=["بازیکن ۱","بازیکن ۲"];
 let pieces=[[0,0,0,0],[0,0,0,0]];
 let current=0, busy=false, lastDice=0, waitingSelect=false, pendingWinner=false;
@@ -325,7 +310,7 @@ let current=0, busy=false, lastDice=0, waitingSelect=false, pendingWinner=false;
 const boardEl=document.getElementById("board");
 for(let i=1;i<=100;i++){
   const c=document.createElement("div");
-  c.className="cell"+(i%10===0?" special":"");
+  c.className="cell"+(CHALLENGE_HOUSES.has(i)?" special":"");
   c.id="cell-"+i; c.textContent=i; boardEl.appendChild(c);
 }
 
@@ -338,17 +323,11 @@ setDicePips(5);
 
 function renderYards(){
   [0,1].forEach(p=>{
-    const yard=document.getElementById("yard"+p);
-    yard.innerHTML="";
+    const yard=document.getElementById("yard"+p); yard.innerHTML="";
     for(let i=0;i<4;i++){
       const slot=document.createElement("div");
       slot.className="yard-slot"+(pieces[p][i]===0?" filled":"");
-      slot.dataset.player=p; slot.dataset.piece=i;
-      if(pieces[p][i]===0){
-        const m=document.createElement("div");
-        m.className="mini p"+p;
-        slot.appendChild(m);
-      }
+      if(pieces[p][i]===0){const m=document.createElement("div");m.className="mini p"+p;slot.appendChild(m)}
       if(waitingSelect && p===current && canMovePiece(p,i,lastDice)){
         slot.classList.add("selectable");
         slot.addEventListener("click",()=>onSelectPiece(i));
@@ -357,17 +336,14 @@ function renderYards(){
     }
   });
 }
-
 function renderBoardTokens(){
   document.querySelectorAll(".token").forEach(t=>t.remove());
   pieces.forEach((arr,p)=>{
     arr.forEach((pos,i)=>{
       if(pos>0 && pos<=FINISH){
-        const cell=document.getElementById("cell-"+pos);
-        if(!cell) return;
+        const cell=document.getElementById("cell-"+pos); if(!cell) return;
         const t=document.createElement("div");
-        t.className="token p"+p;
-        t.dataset.player=p; t.dataset.piece=i;
+        t.className="token p"+p; t.dataset.piece=i;
         if(waitingSelect && p===current && canMovePiece(p,i,lastDice)){
           t.classList.add("selectable");
           t.addEventListener("click",()=>onSelectPiece(i));
@@ -377,190 +353,131 @@ function renderBoardTokens(){
     });
   });
 }
-
 function renderAll(){
-  renderYards();
-  renderBoardTokens();
+  renderYards(); renderBoardTokens();
   document.getElementById("card0").classList.toggle("active", current===0 && !busy);
   document.getElementById("card1").classList.toggle("active", current===1 && !busy);
   document.getElementById("turnText").textContent="نوبت "+names[current];
   const home0=pieces[0].filter(x=>x===0).length, home1=pieces[1].filter(x=>x===0).length;
-  document.getElementById("hint0").textContent= home0? (home0+" در خانه") : "همه در مسیر";
-  document.getElementById("hint1").textContent= home1? (home1+" در خانه") : "همه در مسیر";
+  document.getElementById("hint0").textContent=home0?(home0+" در خانه"):"همه در مسیر";
+  document.getElementById("hint1").textContent=home1?(home1+" در خانه"):"همه در مسیر";
 }
-
-function canMovePiece(p, i, dice){
+function canMovePiece(p,i,dice){
   const pos=pieces[p][i];
-  if(pos===0) return dice===6; // only 6 exits home
+  if(pos===0) return dice===6;
   if(pos>=FINISH) return false;
-  return pos+dice <= FINISH; // exact or within
+  return pos+dice<=FINISH;
 }
+function getMovablePieces(p,dice){const list=[];for(let i=0;i<4;i++) if(canMovePiece(p,i,dice)) list.push(i);return list}
+function placeFlash(house){const cell=document.getElementById("cell-"+house);if(!cell)return;cell.classList.add("flash");setTimeout(()=>cell.classList.remove("flash"),200)}
 
-function getMovablePieces(p, dice){
-  const list=[];
-  for(let i=0;i<4;i++) if(canMovePiece(p,i,dice)) list.push(i);
-  return list;
-}
-
-function placeFlash(house){
-  const cell=document.getElementById("cell-"+house);
-  if(!cell) return;
-  cell.classList.add("flash");
-  setTimeout(()=>cell.classList.remove("flash"), 200);
-}
-
-async function animateMove(p, pieceIdx, from, to){
+async function animateMove(p,pieceIdx,from,to){
   if(from===0){
-    pieces[p][pieceIdx]=1;
-    renderAll();
-    placeFlash(1);
-    sfxStep();
-    await new Promise(r=>setTimeout(r, STEP_MS));
-    from=1;
+    pieces[p][pieceIdx]=1; renderAll(); placeFlash(1); sfxStep();
+    await new Promise(r=>setTimeout(r,STEP_MS)); from=1;
   }
-  for(let h=from+1; h<=to; h++){
-    pieces[p][pieceIdx]=h;
-    renderAll();
+  for(let h=from+1;h<=to;h++){
+    pieces[p][pieceIdx]=h; renderAll();
     const tok=document.querySelector(`.token.p${p}[data-piece="${pieceIdx}"]`);
     if(tok) tok.classList.add("bounce");
-    placeFlash(h);
-    sfxStep();
-    await new Promise(r=>setTimeout(r, STEP_MS));
+    placeFlash(h); sfxStep();
+    await new Promise(r=>setTimeout(r,STEP_MS));
   }
 }
 
 async function onSelectPiece(pieceIdx){
-  if(!waitingSelect || busy) return;
-  if(!canMovePiece(current, pieceIdx, lastDice)) return;
-  waitingSelect=false; busy=true;
-  sfxSelect();
+  if(!waitingSelect||busy) return;
+  if(!canMovePiece(current,pieceIdx,lastDice)) return;
+  waitingSelect=false; busy=true; sfxSelect();
   document.getElementById("statusLine").textContent="";
   document.getElementById("rollBtn").disabled=true;
-
   const from=pieces[current][pieceIdx];
-  let to;
-  if(from===0) to=1; // enter board on 1 (classic simplified: 6 brings out to cell 1)
-  else to=Math.min(FINISH, from+lastDice);
-
-  // If entered with 6, still only place on 1; extra steps from 6 not added on exit (standard house exit)
-  // User asked release with 6 - we put on 1. Optionally could move 6 from start - keep simple: exit to 1 only.
-
-  await animateMove(current, pieceIdx, from, to);
-
+  const to=from===0?1:Math.min(FINISH,from+lastDice);
+  await animateMove(current,pieceIdx,from,to);
   const landed=pieces[current][pieceIdx];
-
-  // win: all 4 at 100
-  if(pieces[current].every(x=>x>=FINISH)){
-    pendingWinner=true; sfxChallenge(); showChallenge(FINISH); return;
-  }
-  if(landed>0 && landed%10===0){
-    sfxChallenge(); showChallenge(landed); return;
-  }
-
-  // extra turn on 6
-  if(lastDice===6){
-    busy=false;
-    document.getElementById("rollBtn").disabled=false;
-    document.getElementById("statusLine").textContent="۶ آوردی — دوباره تاس بزن";
-    renderAll();
-    return;
-  }
-
-  current=1-current;
-  busy=false;
-  document.getElementById("rollBtn").disabled=false;
-  renderAll();
+  if(pieces[current].every(x=>x>=FINISH)){pendingWinner=true;sfxChallenge();showChallenge(FINISH);return}
+  if(CHALLENGE_HOUSES.has(landed)){sfxChallenge();showChallenge(landed);return}
+  if(lastDice===6){busy=false;document.getElementById("rollBtn").disabled=false;document.getElementById("statusLine").textContent="۶ آوردی — دوباره تاس بزن";renderAll();return}
+  current=1-current; busy=false; document.getElementById("rollBtn").disabled=false; renderAll();
 }
 
 async function rollDice(){
-  if(busy || waitingSelect) return;
+  if(busy||waitingSelect) return;
   busy=true; ensureAudio();
-  const face=document.getElementById("diceFace");
-  const btn=document.getElementById("rollBtn");
-  btn.disabled=true;
-  document.getElementById("statusLine").textContent="";
+  const face=document.getElementById("diceFace"), btn=document.getElementById("rollBtn");
+  btn.disabled=true; document.getElementById("statusLine").textContent="";
   face.classList.remove("shake"); void face.offsetWidth; face.classList.add("shake");
-
   let ticks=0;
-  const tickTimer=setInterval(()=>{
-    const n=Math.floor(Math.random()*6)+1;
-    setDicePips(n);
-    sfxDiceTick();
-    ticks++;
-    if(ticks>=16) clearInterval(tickTimer);
-  }, 52);
-
-  await new Promise(r=>setTimeout(r, 920));
-  const value=Math.floor(Math.random()*6)+1;
-  lastDice=value;
-  setDicePips(value);
-  sfxDiceStop();
-
-  const movable=getMovablePieces(current, value);
+  const tickTimer=setInterval(()=>{const n=Math.floor(Math.random()*6)+1;setDicePips(n);sfxDiceTick();ticks++;if(ticks>=16)clearInterval(tickTimer)},52);
+  await new Promise(r=>setTimeout(r,920));
+  const value=Math.floor(Math.random()*6)+1; lastDice=value; setDicePips(value); sfxDiceStop();
+  const movable=getMovablePieces(current,value);
   if(movable.length===0){
     document.getElementById("statusLine").textContent="حرکتی ممکن نیست";
-    await new Promise(r=>setTimeout(r, 700));
-    if(value===6){
-      // still no move but 6 — allow re-roll? keep turn pass for simplicity unless 6 with no piece
-      busy=false; btn.disabled=false; renderAll(); return;
-    }
-    current=1-current;
-    busy=false; btn.disabled=false; renderAll();
-    return;
+    await new Promise(r=>setTimeout(r,700));
+    if(value!==6) current=1-current;
+    busy=false; btn.disabled=false; renderAll(); return;
   }
-
-  waitingSelect=true;
-  busy=false;
-  const hasHome = pieces[current].some(x=>x===0);
-  const hasOut = pieces[current].some(x=>x>0 && x<FINISH);
-  let msg = "روی مهره قابل‌حرکت خودت کلیک کن";
-  if(value===6 && hasHome && hasOut) msg = "۶: روی مهره داخل خانه بزن تا بیاد بیرون، یا مهره بیرون را حرکت بده";
-  else if(value===6 && hasHome) msg = "۶: روی یکی از مهره‌های داخل خانه کلیک کن تا بیاد بیرون";
-  else if(hasOut) msg = "روی یکی از مهره‌های بیرونِ خودت کلیک کن";
+  waitingSelect=true; busy=false;
+  const hasHome=pieces[current].some(x=>x===0), hasOut=pieces[current].some(x=>x>0&&x<FINISH);
+  let msg="روی مهره قابل‌حرکت خودت کلیک کن";
+  if(value===6&&hasHome&&hasOut) msg="۶: روی مهره داخل خانه بزن تا بیاد بیرون، یا مهره بیرون را حرکت بده";
+  else if(value===6&&hasHome) msg="۶: روی یکی از مهره‌های داخل خانه کلیک کن تا بیاد بیرون";
+  else if(hasOut) msg="روی یکی از مهره‌های بیرونِ خودت کلیک کن";
   document.getElementById("statusLine").textContent=msg;
-  renderAll();
-  // keep roll disabled until move done
-  btn.disabled=true;
+  renderAll(); btn.disabled=true;
+}
+
+function updateCloseBtn(){
+  const g=document.querySelector('input[name="girlPick"]:checked');
+  const b=document.querySelector('input[name="boyPick"]:checked');
+  document.getElementById("closeBtn").disabled=!(g&&b);
+  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("picked"));
+  if(g) g.closest(".opt").classList.add("picked");
+  if(b) b.closest(".opt").classList.add("picked");
 }
 
 function showChallenge(house){
-  const level=getLevel(house);
+  const zone=getZone(house);
+  const gTwo=pickTwo(CH[zone.key].girl);
+  const bTwo=pickTwo(CH[zone.key].boy);
   document.getElementById("challengeTitle").textContent="حکم خونه "+house;
-  document.getElementById("girlText").textContent=pickRandom(girlChallenges[level]);
-  document.getElementById("boyText").textContent=pickRandom(boyChallenges[level]);
+  document.getElementById("zoneTag").textContent=zone.label;
+  document.getElementById("gText0").textContent=gTwo[0];
+  document.getElementById("gText1").textContent=gTwo[1];
+  document.getElementById("bText0").textContent=bTwo[0];
+  document.getElementById("bText1").textContent=bTwo[1];
+  document.querySelectorAll('input[name="girlPick"],input[name="boyPick"]').forEach(i=>{i.checked=false});
+  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("picked"));
+  document.getElementById("closeBtn").disabled=true;
   const o=document.getElementById("challengeOverlay"), s=document.getElementById("scroll");
   o.classList.add("show"); s.classList.remove("open"); void s.offsetWidth; s.classList.add("open");
 }
+
+document.querySelectorAll('input[name="girlPick"],input[name="boyPick"]').forEach(i=>{
+  i.addEventListener("change", updateCloseBtn);
+});
+
 function closeChallenge(){
+  if(document.getElementById("closeBtn").disabled) return;
   document.getElementById("challengeOverlay").classList.remove("show");
-  if(pendingWinner){ sfxWin(); showWinner(current); pendingWinner=false; return; }
-  if(lastDice===6){
-    busy=false; document.getElementById("rollBtn").disabled=false;
-    document.getElementById("statusLine").textContent="۶ — دوباره تاس بزن";
-    renderAll(); return;
-  }
-  current=1-current; busy=false;
-  document.getElementById("rollBtn").disabled=false; renderAll();
+  if(pendingWinner){sfxWin();showWinner(current);pendingWinner=false;return}
+  if(lastDice===6){busy=false;document.getElementById("rollBtn").disabled=false;document.getElementById("statusLine").textContent="۶ — دوباره تاس بزن";renderAll();return}
+  current=1-current; busy=false; document.getElementById("rollBtn").disabled=false; renderAll();
 }
-function showWinner(player){
-  document.getElementById("winnerTitle").textContent=names[player]+" برنده شد";
-  document.getElementById("winnerOverlay").classList.add("show");
-  busy=false;
-}
+function showWinner(player){document.getElementById("winnerTitle").textContent=names[player]+" برنده شد";document.getElementById("winnerOverlay").classList.add("show");busy=false}
 function restart(){
   pieces=[[0,0,0,0],[0,0,0,0]]; current=0; busy=false; lastDice=0; waitingSelect=false; pendingWinner=false;
   document.getElementById("winnerOverlay").classList.remove("show");
   document.getElementById("challengeOverlay").classList.remove("show");
-  setDicePips(5);
-  document.getElementById("statusLine").textContent="";
+  setDicePips(5); document.getElementById("statusLine").textContent="";
   document.getElementById("rollBtn").disabled=false;
   document.getElementById("game-screen").classList.remove("active");
   document.getElementById("setup-screen").classList.add("active");
 }
-
-document.getElementById("rollBtn").addEventListener("click", rollDice);
-document.getElementById("closeBtn").addEventListener("click", closeChallenge);
-document.getElementById("restartBtn").addEventListener("click", restart);
+document.getElementById("rollBtn").addEventListener("click",rollDice);
+document.getElementById("closeBtn").addEventListener("click",closeChallenge);
+document.getElementById("restartBtn").addEventListener("click",restart);
 if("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
 </body>
