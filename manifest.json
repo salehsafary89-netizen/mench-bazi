@@ -1,16 +1,21 @@
 {
-  "name": "سامانه صابر بسیج",
-  "short_name": "سامانه صابر",
-  "description": "سامانه جامع مدیریت پایگاه",
+  "name": "منچ رابطه‌ای",
+  "short_name": "منچ رابطه",
+  "description": "بازی دونفره رابطه‌ای با تاس و چالش‌های ویژه",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#121413",
-  "theme_color": "#121413",
+  "orientation": "portrait",
+  "background_color": "#07070c",
+  "theme_color": "#07070c",
   "dir": "rtl",
   "lang": "fa",
   "icons": [
-    {"src":"./saber-app-icon.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }
