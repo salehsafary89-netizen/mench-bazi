@@ -1,17 +1,21 @@
 {
-  "name": "سامانه طریق پایا",
-  "short_name": "طریق",
-  "description": "مدیریت پایگاه دانش‌آموزی بسیج — پایا",
+  "name": "منچ رابطه‌ای",
+  "short_name": "منچ رابطه",
+  "description": "بازی دونفره رابطه‌ای با تاس و چالش‌های ویژه",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#f3f7f4",
-  "theme_color": "#1b5e20",
+  "orientation": "portrait",
+  "background_color": "#07070c",
+  "theme_color": "#07070c",
   "dir": "rtl",
   "lang": "fa",
   "icons": [
-    {"src":"./icon-tariq.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"},
-    {"src":"./icon-r.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }
