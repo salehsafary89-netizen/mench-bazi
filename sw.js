@@ -1,4 +1,4 @@
-const CACHE_NAME = 'manch-rel-v7';
+const CACHE_NAME = 'manch-rel-v8';
 const SHELL = [
   './',
   './index.html',

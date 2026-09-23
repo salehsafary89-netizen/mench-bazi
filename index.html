@@ -13,19 +13,18 @@
 <title>منچ رابطه‌ای</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-:root{--bg:#0a0812;--panel:#14101c;--panel2:#1c1628;--line:#2e2640;--text:#f4f0fa;--muted:#9a90a8;--pink:#ff5a9a;--pink-soft:#ff5a9a28;--gold:#f0c675;--gold-dim:#f0c67522;--blue:#7aa8ff}
+:root{--bg:#0a0812;--panel:#14101c;--panel2:#1c1628;--line:#2e2640;--text:#f4f0fa;--muted:#9a90a8;--pink:#ff5a9a;--pink-soft:#ff5a9a28;--gold:#f0c675;--gold-dim:#f0c67522;--blue:#7aa8ff;--green:#4ade80}
 *{box-sizing:border-box;margin:0;padding:0}
 body{min-height:100vh;background:radial-gradient(ellipse at 70% -10%,#2a1535 0%,transparent 45%),radial-gradient(ellipse at 20% 100%,#151028 0%,transparent 40%),#0a0812;color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;overflow-x:hidden}
 button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
-.screen{display:none;min-height:100vh;width:min(480px,100%);margin:0 auto;padding:22px 16px 48px;flex-direction:column}
+.screen{display:none;min-height:100vh;width:min(480px,100%);margin:0 auto;padding:22px 16px 36px;flex-direction:column}
 .screen.active{display:flex}
-.credit{position:fixed;bottom:8px;left:0;right:0;text-align:center;font-size:10px;color:#5a5470;z-index:60;pointer-events:none}
 #license-screen{justify-content:center;align-items:center;text-align:center;gap:26px}
 .logo-big{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#ff5a9a 10%,#f0c675 50%,#a78bfa 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .logo-sub{color:var(--muted);font-size:.92em;margin-top:-12px}
 .license-box{width:100%;background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:26px 20px;box-shadow:0 24px 60px #0008}
 .license-box label{display:block;font-size:.88em;color:var(--muted);margin-bottom:10px;text-align:right}
-.license-box input{width:100%;padding:15px;border-radius:12px;border:1.5px solid var(--line);background:#0c0a12;color:var(--text);font-size:1.2em;text-align:center;letter-spacing:4px;font-family:inherit}
+.license-box input{width:100%;padding:15px;border-radius:12px;border:1.5px solid var(--line);background:#0c0a12;color:var(--text);font-size:1.1em;text-align:center;font-family:inherit}
 .license-box input:focus{border-color:var(--pink);outline:none;box-shadow:0 0 0 3px var(--pink-soft)}
 .license-box input.error{border-color:#ff4d6a;animation:shake-x .4s ease}
 @keyframes shake-x{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
@@ -42,12 +41,16 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .gender-btn{flex:1;padding:11px;border-radius:10px;border:1.5px solid var(--line);background:#0c0a12;color:var(--muted);font-weight:600}
 .gender-btn.selected-girl{border-color:var(--pink);background:var(--pink-soft);color:var(--pink)}
 .gender-btn.selected-boy{border-color:var(--blue);background:#7aa8ff22;color:var(--blue)}
+.mode-banner{text-align:center;font-size:11px;color:var(--muted);margin-bottom:10px;padding:8px;border-radius:8px;background:#ffffff06;border:1px solid var(--line)}
+.mode-banner.hot{color:#f0a0c0;border-color:#5a3040}
+.mode-banner.plain{color:#90b090;border-color:#305040}
 .game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
 .game-header .brand{font-weight:800;font-size:1.1em;background:linear-gradient(135deg,#ff5a9a,#f0c675);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .game-header .badge{font-size:11px;color:var(--gold);border:1px solid #5a4a30;background:var(--gold-dim);padding:5px 11px;border-radius:20px}
 .players{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .player-card{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1.5px solid var(--line);border-radius:14px;padding:12px 10px;text-align:center;transition:.25s}
 .player-card.active{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 0 24px #ff5a9a30}
+.player-card.dev-halo{border-color:#4ade80!important;box-shadow:0 0 0 1px #4ade80,0 0 22px #4ade8055!important}
 .player-card .name{font-size:.9em;font-weight:600;margin-bottom:2px}
 .player-card .gender-tag{font-size:10px;color:var(--muted);margin-bottom:8px}
 .yard{display:flex;justify-content:center;gap:6px;margin-bottom:6px;min-height:28px}
@@ -62,7 +65,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .board-wrap{background:linear-gradient(160deg,var(--panel),#120e1a);border:1px solid var(--line);border-radius:16px;padding:10px;margin-bottom:14px}
 .board{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
 .cell{aspect-ratio:1;border-radius:4px;background:#100e16;border:1px solid #221c30;display:flex;align-items:center;justify-content:center;font-size:7px;color:#4a4460;position:relative;transition:background .2s,border-color .2s}
-/* NO special mark — challenges hidden */
 .cell.flash{background:#2a1a40!important;border-color:var(--pink)!important;box-shadow:0 0 12px #ff5a9a44}
 .token{width:12px;height:12px;border-radius:50%;position:absolute;z-index:2;box-shadow:0 0 10px currentColor,0 0 3px #fff8;cursor:pointer;transition:transform .2s ease,box-shadow .2s}
 .token.p0{background:linear-gradient(145deg,#ff7ab0,var(--pink));color:var(--pink)}
@@ -74,43 +76,17 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .dice-section{text-align:center;margin-bottom:12px}
 .turn-text{color:var(--muted);font-size:12px;margin-bottom:10px}
 .dice-wrap{display:flex;justify-content:center;margin-bottom:12px;perspective:400px}
-.dice-face{
-  width:96px;height:96px;border-radius:20px;
-  background:
-    linear-gradient(160deg,#3a3250 0%,#1a1628 45%,#0e0c16 100%);
-  border:2px solid #6a6080;
-  box-shadow:
-    0 18px 40px #000c,
-    0 6px 12px #0008,
-    inset 0 3px 0 #ffffff18,
-    inset 0 -4px 8px #0006,
-    inset 3px 0 6px #ffffff08,
-    inset -3px 0 6px #0004;
-  display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
-  padding:15px;transform:rotateX(8deg) rotateY(-4deg);
-  transition:transform .2s;
-}
+.dice-face{width:96px;height:96px;border-radius:20px;background:linear-gradient(160deg,#3a3250 0%,#1a1628 45%,#0e0c16 100%);border:2px solid #6a6080;box-shadow:0 18px 40px #000c,0 6px 12px #0008,inset 0 3px 0 #ffffff18,inset 0 -4px 8px #0006,inset 3px 0 6px #ffffff08,inset -3px 0 6px #0004;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:15px;transform:rotateX(8deg) rotateY(-4deg)}
 .dice-face.shake{animation:dice-shake .95s cubic-bezier(.36,.07,.19,.97)}
-@keyframes dice-shake{
-  0%{transform:rotateX(8deg) rotateY(-4deg) rotateZ(0) scale(1)}
-  15%{transform:rotateX(-6deg) rotateY(10deg) rotateZ(-14deg) scale(1.1)}
-  30%{transform:rotateX(12deg) rotateY(-8deg) rotateZ(12deg) scale(1.08)}
-  45%{transform:rotateX(-4deg) rotateY(6deg) rotateZ(-10deg) scale(1.12)}
-  60%{transform:rotateX(8deg) rotateY(-5deg) rotateZ(7deg) scale(1.05)}
-  75%{transform:rotateX(2deg) rotateY(3deg) rotateZ(-4deg) scale(1.06)}
-  100%{transform:rotateX(8deg) rotateY(-4deg) rotateZ(0) scale(1)}
-}
-.pip{
-  width:12px;height:12px;border-radius:50%;margin:auto;
-  background:radial-gradient(circle at 32% 28%,#fff 0%,#f0d890 45%,#c9a040 100%);
-  box-shadow:0 1px 2px #0006,0 0 8px #f0c67555,inset 0 1px 1px #fff8;
-  opacity:0;transform:scale(.4);transition:opacity .15s,transform .15s;
-}
+@keyframes dice-shake{0%{transform:rotateX(8deg) rotateY(-4deg) rotateZ(0) scale(1)}15%{transform:rotateX(-6deg) rotateY(10deg) rotateZ(-14deg) scale(1.1)}30%{transform:rotateX(12deg) rotateY(-8deg) rotateZ(12deg) scale(1.08)}45%{transform:rotateX(-4deg) rotateY(6deg) rotateZ(-10deg) scale(1.12)}60%{transform:rotateX(8deg) rotateY(-5deg) rotateZ(7deg) scale(1.05)}75%{transform:rotateX(2deg) rotateY(3deg) rotateZ(-4deg) scale(1.06)}100%{transform:rotateX(8deg) rotateY(-4deg) rotateZ(0) scale(1)}}
+.pip{width:12px;height:12px;border-radius:50%;margin:auto;background:radial-gradient(circle at 32% 28%,#fff 0%,#f0d890 45%,#c9a040 100%);box-shadow:0 1px 2px #0006,0 0 8px #f0c67555,inset 0 1px 1px #fff8;opacity:0;transform:scale(.4);transition:opacity .15s,transform .15s}
 .pip.on{opacity:1;transform:scale(1)}
 .btn-dice{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,#ff5a9a,#e8894a);color:#fff;font-weight:700;font-size:1.05em;box-shadow:0 8px 22px #ff5a9a40}
 .btn-dice:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 .status-line{text-align:center;color:var(--gold);font-size:12px;min-height:18px;margin-bottom:6px}
 .note{text-align:center;color:#5a5470;font-size:10px;line-height:1.6;margin-top:6px}
+.cheat-hint{display:none;text-align:center;font-size:10px;color:#4ade8088;margin-top:4px}
+.cheat-hint.show{display:block}
 .overlay{position:fixed;inset:0;background:#06040add;display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
 .overlay.show{display:flex}
 .scroll{width:min(420px,100%);background:linear-gradient(180deg,#f7eedc,#e6d4b0);color:#1a1510;border-radius:10px;padding:22px 18px;box-shadow:0 28px 70px #000c;transform-origin:top center;max-height:90vh;overflow-y:auto}
@@ -138,14 +114,13 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 </style>
 </head>
 <body>
-<div class="credit">سازنده صالح صفری</div>
 
 <div id="license-screen" class="screen active">
   <div class="logo-big">منچ رابطه‌ای</div>
   <div class="logo-sub">نسخه خصوصی • مثبت ۱۸</div>
   <div class="license-box">
-    <label>کد لایسنس را وارد کنید</label>
-    <input type="text" id="licenseInput" placeholder="••••••••••" autocomplete="off" inputmode="numeric">
+    <label>نام دارنده لایسنس</label>
+    <input type="text" id="licenseInput" placeholder="نام کامل خود را وارد کنید" autocomplete="off">
     <button class="btn-main" id="licenseBtn">ورود به بازی</button>
     <div class="license-error" id="licenseError"></div>
   </div>
@@ -153,7 +128,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 
 <div id="setup-screen" class="screen">
   <h2>آماده‌سازی بازیکنان</h2>
-  <div class="setup-sub">اسم و نقش (دختر/پسر) هر نفر را مشخص کنید</div>
+  <div class="setup-sub">اسم و نقش هر نفر را مشخص کنید</div>
   <div class="setup-card">
     <div class="title">بازیکن ۱</div>
     <input type="text" id="name1" placeholder="اسم بازیکن ۱" value="بازیکن ۱">
@@ -176,8 +151,9 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 <div id="game-screen" class="screen">
   <div class="game-header">
     <div class="brand">منچ رابطه‌ای</div>
-    <div class="badge">۴ مهره / غافلگیرانه</div>
+    <div class="badge" id="modeBadge">۴ مهره</div>
   </div>
+  <div class="mode-banner" id="modeBanner"></div>
   <div class="players">
     <div class="player-card active" id="card0">
       <div class="name" id="displayName0">بازیکن ۱</div>
@@ -204,8 +180,9 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
       </div>
     </div>
     <button class="btn-dice" id="rollBtn">پرتاب تاس</button>
+    <div class="cheat-hint" id="cheatHint">دوبار روی کارت خودت بزن = تاس اجباری ۶ (فقط سازنده)</div>
   </div>
-  <div class="note">با ۶ و کلیک روی مهره داخل خانه، مهره بیرون می‌آید<br>چالش‌ها مخفی‌اند • فقط برای نفری که روی خانه افتاده</div>
+  <div class="note">با ۶ و کلیک روی مهره داخل خانه، مهره بیرون می‌آید<br>چالش‌ها مخفی‌اند و فقط برای نقش خودت</div>
 </div>
 
 <div class="overlay" id="challengeOverlay">
@@ -224,7 +201,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
   <div class="winner-box">
     <div class="emoji">✦</div>
     <h1 id="winnerTitle">برنده شدی</h1>
-    <p>هر ۴ مهره به خانه ۱۰۰ رسید.<br>لحظه‌های خوبی با هم ساختید.</p>
+    <p>هر ۴ مهره به خانه ۱۰۰ رسید.</p>
     <button class="btn-restart" id="restartBtn">بازی دوباره</button>
   </div>
 </div>
@@ -233,81 +210,137 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 const STEP_MS=600, FINISH=100;
 const PIP_MAP={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
 
-/* --- 3-zone challenge engines (hidden cells) --- */
-function buildZoneHouses(from,to,count){
-  const pool=[];
-  for(let i=from;i<=to;i++) pool.push(i);
-  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
-  return pool.slice(0,count).sort((a,b)=>a-b);
+/* ===== License names (fuzzy) ===== */
+function normName(s){
+  return (s||"").trim().replace(/\s+/g,"")
+    .replace(/ي/g,"ی").replace(/ك/g,"ک")
+    .replace(/[آأإٱ]/g,"ا").replace(/ة/g,"ه")
+    .toLowerCase();
 }
-// regenerate each game start
-let CHALLENGE_HOUSES=new Set();
-function rebuildChallengeMap(){
-  const z1=buildZoneHouses(3,33,7);
-  const z2=buildZoneHouses(34,66,7);
-  const z3=buildZoneHouses(67,99,7);
-  CHALLENGE_HOUSES=new Set([...z1,...z2,...z3,100]);
+function matchLicense(input){
+  const n=normName(input);
+  if(!n||n.length<2) return null;
+  // صالح صفری / صالح ص / صالصفری / صالح‌صفری
+  if((n.includes("صالح")&&n.includes("صفر"))||n.includes("صالحص")||n==="صالح"||n.startsWith("صالحص")||n.includes("saleh")) return "dev";
+  // سجاد جعفری / سجاد ج / سجعفری
+  if((n.includes("سجاد")&&(n.includes("جعفر")||n.includes("جفر")))||n.includes("سجادج")||n==="سجادی"||n==="سجادسه") return "user";
+  // سجاد معیل / سجاد م / سمعیل / معیل
+  if((n.includes("سجاد")&&(n.includes("معیل")||n.includes("معيل")||n.includes("مومنی")||n.includes("مومن")))||n.includes("سجادم")||n.includes("معیل")||n==="سجادمه") return "user";
+  // partial short
+  if(n==="سجاد"||n==="جعفری"||n==="جعفري") return "user";
+  if(n.includes("صفر")&&n.length>=3) return "dev";
+  return null;
 }
 
+let licenseRole=null; // 'dev' | 'user'
+let forceNextSix=false;
+
+/* ===== Challenge pools (milder) — no reuse until exhausted ===== */
 const CH={
   soft:{
     girl:[
       "۳۰ ثانیه فقط به پسر نگاه کن و لبخند بزن؛ بعد یک تعریف کوتاه بگو.",
       "دستت را ۱۵ ثانیه آروم روی شانه یا بازوی پسر بگذار.",
       "یک بوسه خیلی ملایم روی گونه یا پیشانی پسر بزن.",
-      "دست‌ها دور کمر پسر؛ یک بوسه کوتاه روی لبش (بدون فشار).",
-      "از روی لباس، شانه یا کمر پسر را آروم نوازش کن."
+      "دست‌ها دور کمر پسر؛ یک بوسه کوتاه روی لب (بدون فشار).",
+      "از روی لباس، شانه یا کمر پسر را آروم نوازش کن.",
+      "یک خاطره خوب کوتاه از امشب بگو و دستش را بگیر.",
+      "پیشانی‌اش را ببوس و بگو چه چیزی در او دوست داری.",
+      "۱۰ ثانیه فقط انگشت‌هایت را بین انگشتان او قفل کن."
     ],
     boy:[
       "۳۰ ثانیه فقط به دختر نگاه کن و لبخند بزن؛ بعد یک تعریف کوتاه بگو.",
       "دستت را ۱۵ ثانیه آروم روی شانه یا بازوی دختر بگذار.",
       "یک بوسه خیلی ملایم روی گونه یا پیشانی دختر بزن.",
-      "دست‌ها دور کمر دختر؛ یک بوسه کوتاه روی لبش (بدون فشار).",
-      "از روی لباس، شانه یا کمر دختر را آروم نوازش کن."
+      "دست‌ها دور کمر دختر؛ یک بوسه کوتاه روی لب (بدون فشار).",
+      "از روی لباس، شانه یا کمر دختر را آروم نوازش کن.",
+      "یک خاطره خوب کوتاه از امشب بگو و دستش را بگیر.",
+      "پیشانی‌اش را ببوس و بگو چه چیزی در او دوست داری.",
+      "۱۰ ثانیه فقط انگشت‌هایت را بین انگشتان او قفل کن."
     ]
   },
   medium:{
     girl:[
-      "یک دکمه از لباس پسر را باز کن و همان جا را ببوس.",
-      "از روی لباس، بدنش را نزدیک‌تر نوازش کن تا واکنش نشان دهد.",
-      "کمی لباس بالایی خودت را کنار بزن و بگذار لمست کند.",
-      "روی پای پسر بنشین (با لباس) و بدنت را آروم به او نزدیک کن.",
-      "گردن و ترقوه پسر را با لب خیلی آروم نوازش کن."
+      "یک دکمه از لباس پسر را باز کن و همان‌جا را ببوس.",
+      "از روی لباس، نزدیک‌تر نوازش کن تا کمی واکنش نشان دهد.",
+      "کمی یقه یا آستین خودت را کنار بزن و بگذار لمست کند.",
+      "روی پای او بنشین (با لباس) و بدنت را آروم نزدیک کن.",
+      "گردن یا ترقوه پسر را با لب خیلی آروم نوازش کن.",
+      "پشت گوش یا خط فک او را خیلی ملایم ببوس.",
+      "دست او را بگذار روی کمرت (از روی لباس) و چند ثانیه نگه دار.",
+      "یک جمله‌ی صمیمی و کمی جسورانه در گوشش بگو."
     ],
     boy:[
-      "یک دکمه از لباس دختر را باز کن و همان جا را ببوس.",
-      "از روی لباس، کمر یا سینه‌اش را آروم فشار بده و نوازش کن.",
-      "کمی لباس بالایی خودت را کنار بزن و بگذار لمست کند.",
-      "محکم بغلش کن و بدنت را به او بچسبان.",
-      "گردن و گوش دختر را با لب خیلی آروم نوازش کن."
+      "یک دکمه از لباس دختر را باز کن و همان‌جا را ببوس.",
+      "از روی لباس، کمرش را آروم فشار بده و نوازش کن.",
+      "کمی یقه یا آستین خودت را کنار بزن و بگذار لمست کند.",
+      "محکم بغلش کن و بدنت را چند ثانیه به او بچسبان.",
+      "گردن یا گوش دختر را با لب خیلی آروم نوازش کن.",
+      "خط شانه تا گردنش را خیلی ملایم ببوس.",
+      "دست او را بگذار روی سینه‌ات (از روی لباس) و چند ثانیه نگه دار.",
+      "یک جمله‌ی صمیمی و کمی جسورانه در گوشش بگو."
     ]
   },
   hard:{
     girl:[
-      "با دست یا دهان، پسر را تا نزدیک اوج ببر ولی تمام نکن.",
-      "لباس زیر را کنار بگذار و بگذار با دست یا دهان تحریک‌ت کند.",
-      "روی پسر سوار شو بدون دخول و بدنت را به او بمال.",
-      "برای دو دقیقه با رضایت، کنترل بدنت را به او بسپار.",
-      "رابطه کامل؛ پوزیشن و سرعت را با هم توافق کنید."
+      "از روی لباس، قسمت‌های حساس‌تر بدن پسر را چند ثانیه نوازش کن.",
+      "لباس بالایی را کمی بالاتر ببر و بگذار کمرت را لمس کند.",
+      "روی پایش بنشین و بدنت را آرام‌آرام به او بمال (با لباس).",
+      "گردن تا ترقوه را با لب و نوک زبان خیلی آروم طی کن.",
+      "دستش را زیر لباست روی کمر یا شکم بگذار (با رضایت).",
+      "یک بوسه‌ی عمیق‌تر بده و همان لحظه کمرش را بفشار.",
+      "برای ۳۰ ثانیه فقط با لمس و بوسه تحریکش کن، نه بیشتر.",
+      "در گوشش بگو دوست داری الان چه کاری باهات بکند (محتاطانه)."
     ],
     boy:[
-      "با دست یا دهان، دختر را تا نزدیک اوج ببر ولی تمام نکن.",
-      "لباس زیر دختر را کنار بگذار و با دست یا دهان تحریکش کن.",
-      "دختر را روی خودت بنشان بدون دخول و بدنش را به خودت بمال.",
-      "برای دو دقیقه با رضایت، کنترل بدنش را بگیر.",
-      "رابطه کامل؛ پوزیشن و سرعت را با هم توافق کنید."
+      "از روی لباس، قسمت‌های حساس‌تر بدن دختر را چند ثانیه نوازش کن.",
+      "لباس بالایی را کمی بالاتر ببر و کمرش را لمس کن (با رضایت).",
+      "او را نزدیک بکش و بدنت را آرام‌آرام به او بمال (با لباس).",
+      "گردن تا زیر گوش را با لب و نوک زبان خیلی آروم طی کن.",
+      "دستت را زیر لباسش روی کمر یا شکم بگذار (با رضایت).",
+      "یک بوسه‌ی عمیق‌تر بده و همان لحظه کمرش را بفشار.",
+      "برای ۳۰ ثانیه فقط با لمس و بوسه تحریکش کن، نه بیشتر.",
+      "در گوشش بگو دوست داری الان چه کاری باهات بکند (محتاطانه)."
     ]
   }
 };
+const usedCh= {soft:{girl:new Set(),boy:new Set()}, medium:{girl:new Set(),boy:new Set()}, hard:{girl:new Set(),boy:new Set()}};
+
+function pickTwoNoRepeat(zone, role){
+  const pool=CH[zone][role];
+  const used=usedCh[zone][role];
+  let available=pool.map((t,i)=>i).filter(i=>!used.has(i));
+  if(available.length<2){ used.clear(); available=pool.map((_,i)=>i); }
+  // shuffle available
+  for(let i=available.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[available[i],available[j]]=[available[j],available[i]]}
+  const a=available[0], b=available[1];
+  used.add(a); used.add(b);
+  return [pool[a], pool[b]];
+}
+
+function buildZoneHouses(from,to,every){
+  const out=[];
+  for(let i=from;i<=to;i+=every) out.push(i);
+  // slight jitter for unpredictability
+  return out.map(h=>{
+    const j=h+(Math.random()<0.5?0:1);
+    return Math.min(to, Math.max(from,j));
+  }).filter((v,i,a)=>a.indexOf(v)===i).sort((a,b)=>a-b);
+}
+let CHALLENGE_HOUSES=new Set();
+function rebuildChallengeMap(){
+  // ~ every 3 cells
+  const z1=buildZoneHouses(3,33,3);
+  const z2=buildZoneHouses(34,66,3);
+  const z3=buildZoneHouses(67,99,3);
+  CHALLENGE_HOUSES=new Set([...z1,...z2,...z3,100]);
+  // reset used challenges each game
+  Object.keys(usedCh).forEach(z=>{usedCh[z].girl.clear();usedCh[z].boy.clear()});
+}
 function getZone(house){
   if(house<=33) return {key:"soft",label:"بخش ۱ — ملایم"};
   if(house<=66) return {key:"medium",label:"بخش ۲ — متوسط"};
-  return {key:"hard",label:"بخش ۳ — خیلی هات"};
-}
-function pickTwo(arr){
-  const a=[...arr];
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
-  return [a[0],a[1]];
+  return {key:"hard",label:"بخش ۳ — گرم‌تر"};
 }
 
 let audioCtx=null;
@@ -317,23 +350,32 @@ function sfxDiceTick(){tone(140+Math.random()*180,0.028,"square",0.05)}
 function sfxDiceStop(){tone(260,0.08,"triangle",0.09,380);setTimeout(()=>tone(420,0.1,"sine",0.06),70)}
 function sfxStep(){tone(380,0.05,"triangle",0.04,520)}
 function sfxSelect(){tone(600,0.06,"sine",0.05)}
-function sfxSurprise(){
-  // shocking / exciting hit
-  tone(90,0.12,"sawtooth",0.11,60);
-  setTimeout(()=>tone(600,0.08,"square",0.08),80);
-  setTimeout(()=>tone(900,0.15,"sine",0.07,400),160);
-  setTimeout(()=>tone(200,0.2,"triangle",0.09),280);
-}
+function sfxSurprise(){tone(90,0.12,"sawtooth",0.11,60);setTimeout(()=>tone(600,0.08,"square",0.08),80);setTimeout(()=>tone(900,0.15,"sine",0.07,400),160);setTimeout(()=>tone(200,0.2,"triangle",0.09),280)}
 function sfxWin(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,0.15,"sine",0.075),i*120))}
 
-const LICENSE_CODE="0970185839";
-function normalizeDigits(str){const p="۰۱۲۳۴۵۶۷۸۹",a="٠١٢٣٤٥٦٧٨٩";return str.replace(/[۰-۹]/g,d=>p.indexOf(d)).replace(/[٠-٩]/g,d=>a.indexOf(d)).replace(/\D/g,"")}
 document.getElementById("licenseBtn").addEventListener("click",checkLicense);
 document.getElementById("licenseInput").addEventListener("keydown",e=>{if(e.key==="Enter")checkLicense()});
-function checkLicense(){ensureAudio();const input=document.getElementById("licenseInput"),err=document.getElementById("licenseError");if(normalizeDigits(input.value.trim())===LICENSE_CODE){err.textContent="";document.getElementById("license-screen").classList.remove("active");document.getElementById("setup-screen").classList.add("active")}else{input.classList.add("error");err.textContent="کد لایسنس نادرست است";setTimeout(()=>input.classList.remove("error"),400)}}
+function checkLicense(){
+  ensureAudio();
+  const input=document.getElementById("licenseInput"), err=document.getElementById("licenseError");
+  const role=matchLicense(input.value);
+  if(role){
+    licenseRole=role; err.textContent="";
+    document.getElementById("license-screen").classList.remove("active");
+    document.getElementById("setup-screen").classList.add("active");
+    if(role==="dev") document.getElementById("cheatHint").classList.add("show");
+  }else{
+    input.classList.add("error"); err.textContent="نام مجاز نیست";
+    setTimeout(()=>input.classList.remove("error"),400);
+  }
+}
 
 const genders=["girl","boy"];
 document.querySelectorAll(".gender-btn").forEach(btn=>{btn.addEventListener("click",()=>{const p=+btn.dataset.player,g=btn.dataset.gender;genders[p]=g;document.querySelectorAll(`.gender-btn[data-player="${p}"]`).forEach(b=>b.classList.remove("selected-girl","selected-boy"));btn.classList.add(g==="girl"?"selected-girl":"selected-boy")})});
+
+let challengesEnabled=true;
+function isDevName(name){ return matchLicense(name)==="dev"; }
+
 document.getElementById("startBtn").addEventListener("click",()=>{
   ensureAudio();
   names[0]=document.getElementById("name1").value.trim()||"بازیکن ۱";
@@ -342,10 +384,47 @@ document.getElementById("startBtn").addEventListener("click",()=>{
   document.getElementById("displayName1").textContent=names[1];
   document.getElementById("displayGender0").textContent=genders[0]==="girl"?"دختر":"پسر";
   document.getElementById("displayGender1").textContent=genders[1]==="girl"?"دختر":"پسر";
+
+  // mixed genders => challenges; both same (esp both boys) => plain
+  challengesEnabled = (genders[0]!==genders[1]);
+  const banner=document.getElementById("modeBanner");
+  const badge=document.getElementById("modeBadge");
+  if(challengesEnabled){
+    banner.className="mode-banner hot";
+    banner.textContent="حالت رابطه‌ای فعال است (دختر + پسر)";
+    badge.textContent="چالش‌دار";
+  }else{
+    banner.className="mode-banner plain";
+    banner.textContent="منچ ساده — چالش جنسی غیرفعال (هر دو هم‌نقش)";
+    badge.textContent="منچ ساده";
+  }
+
+  // green halo for صالح صفری on either card
+  document.getElementById("card0").classList.toggle("dev-halo", isDevName(names[0]));
+  document.getElementById("card1").classList.toggle("dev-halo", isDevName(names[1]));
+
   rebuildChallengeMap();
   document.getElementById("setup-screen").classList.remove("active");
   document.getElementById("game-screen").classList.add("active");
   renderAll();
+});
+
+/* secret cheat: double-tap own card if that player is dev name OR license is dev and that name is dev */
+let lastTap={t:0,p:-1};
+[0,1].forEach(p=>{
+  document.getElementById("card"+p).addEventListener("click",()=>{
+    if(busy||waitingSelect) return;
+    if(p!==current) return;
+    if(!(isDevName(names[p]) || (licenseRole==="dev" && isDevName(names[p])))) return;
+    const now=Date.now();
+    if(lastTap.p===p && now-lastTap.t<400){
+      forceNextSix=true;
+      document.getElementById("statusLine").textContent="…";
+      // subtle — opponent sees almost nothing
+      setTimeout(()=>{ if(document.getElementById("statusLine").textContent==="…") document.getElementById("statusLine").textContent=""; },200);
+    }
+    lastTap={t:now,p};
+  });
 });
 
 let names=["بازیکن ۱","بازیکن ۲"];
@@ -353,16 +432,9 @@ let pieces=[[0,0,0,0],[0,0,0,0]];
 let current=0, busy=false, lastDice=0, waitingSelect=false, pendingWinner=false;
 
 const boardEl=document.getElementById("board");
-for(let i=1;i<=100;i++){
-  const c=document.createElement("div");
-  c.className="cell"; c.id="cell-"+i; c.textContent=i; boardEl.appendChild(c);
-}
+for(let i=1;i<=100;i++){const c=document.createElement("div");c.className="cell";c.id="cell-"+i;c.textContent=i;boardEl.appendChild(c)}
 
-function setDicePips(n){
-  const face=document.getElementById("diceFace");
-  face.querySelectorAll(".pip").forEach(p=>p.classList.remove("on"));
-  if(n>=1&&n<=6) PIP_MAP[n].forEach(i=>face.querySelector(`.pip[data-i="${i}"]`).classList.add("on"));
-}
+function setDicePips(n){const face=document.getElementById("diceFace");face.querySelectorAll(".pip").forEach(p=>p.classList.remove("on"));if(n>=1&&n<=6)PIP_MAP[n].forEach(i=>face.querySelector(`.pip[data-i="${i}"]`).classList.add("on"))}
 setDicePips(5);
 
 function renderYards(){
@@ -405,12 +477,7 @@ function placeFlash(house){const cell=document.getElementById("cell-"+house);if(
 
 async function animateMove(p,pieceIdx,from,to){
   if(from===0){pieces[p][pieceIdx]=1;renderAll();placeFlash(1);sfxStep();await new Promise(r=>setTimeout(r,STEP_MS));from=1}
-  for(let h=from+1;h<=to;h++){
-    pieces[p][pieceIdx]=h;renderAll();
-    const tok=document.querySelector(`.token.p${p}[data-piece="${pieceIdx}"]`);
-    if(tok) tok.classList.add("bounce");
-    placeFlash(h);sfxStep();await new Promise(r=>setTimeout(r,STEP_MS));
-  }
+  for(let h=from+1;h<=to;h++){pieces[p][pieceIdx]=h;renderAll();const tok=document.querySelector(`.token.p${p}[data-piece="${pieceIdx}"]`);if(tok)tok.classList.add("bounce");placeFlash(h);sfxStep();await new Promise(r=>setTimeout(r,STEP_MS))}
 }
 
 async function onSelectPiece(pieceIdx){
@@ -423,8 +490,8 @@ async function onSelectPiece(pieceIdx){
   const to=from===0?1:Math.min(FINISH,from+lastDice);
   await animateMove(current,pieceIdx,from,to);
   const landed=pieces[current][pieceIdx];
-  if(pieces[current].every(x=>x>=FINISH)){pendingWinner=true;showChallenge(FINISH);return}
-  if(CHALLENGE_HOUSES.has(landed)){showChallenge(landed);return}
+  if(pieces[current].every(x=>x>=FINISH)){pendingWinner=true; if(challengesEnabled) showChallenge(FINISH); else {sfxWin();showWinner(current);pendingWinner=false;} return}
+  if(challengesEnabled && CHALLENGE_HOUSES.has(landed)){showChallenge(landed);return}
   if(lastDice===6){busy=false;document.getElementById("rollBtn").disabled=false;document.getElementById("statusLine").textContent="۶ آوردی — دوباره تاس بزن";renderAll();return}
   current=1-current; busy=false; document.getElementById("rollBtn").disabled=false; renderAll();
 }
@@ -438,7 +505,9 @@ async function rollDice(){
   let ticks=0;
   const tickTimer=setInterval(()=>{const n=Math.floor(Math.random()*6)+1;setDicePips(n);sfxDiceTick();ticks++;if(ticks>=16)clearInterval(tickTimer)},52);
   await new Promise(r=>setTimeout(r,950));
-  const value=Math.floor(Math.random()*6)+1; lastDice=value; setDicePips(value); sfxDiceStop();
+  let value=Math.floor(Math.random()*6)+1;
+  if(forceNextSix){ value=6; forceNextSix=false; }
+  lastDice=value; setDicePips(value); sfxDiceStop();
   const movable=getMovablePieces(current,value);
   if(movable.length===0){
     document.getElementById("statusLine").textContent="حرکتی ممکن نیست";
@@ -466,15 +535,15 @@ function updateCloseBtn(){
 function showChallenge(house){
   sfxSurprise();
   const zone=getZone(house);
-  const role=genders[current]; // only the player who landed
-  const two=pickTwo(CH[zone.key][role]);
+  const role=genders[current];
+  const two=pickTwoNoRepeat(zone.key, role);
   document.getElementById("challengeTitle").textContent="حکم خونه "+house;
   document.getElementById("zoneTag").textContent=zone.label;
   const rt=document.getElementById("roleTitle");
   rt.className="role-title "+role;
   rt.textContent= role==="girl"
-    ? ("چالش برای "+names[current]+" (دختر) — یکی را انتخاب کن")
-    : ("چالش برای "+names[current]+" (پسر) — یکی را انتخاب کن");
+    ? ("چالش برای "+names[current]+" — دختر")
+    : ("چالش برای "+names[current]+" — پسر");
   document.getElementById("text0").textContent=two[0];
   document.getElementById("text1").textContent=two[1];
   document.querySelectorAll('input[name="pick"]').forEach(i=>i.checked=false);
@@ -483,7 +552,6 @@ function showChallenge(house){
   const o=document.getElementById("challengeOverlay"), s=document.getElementById("scroll");
   o.classList.add("show"); s.classList.remove("open"); void s.offsetWidth; s.classList.add("open");
 }
-
 document.querySelectorAll('input[name="pick"]').forEach(i=>i.addEventListener("change",updateCloseBtn));
 
 function closeChallenge(){
@@ -495,7 +563,7 @@ function closeChallenge(){
 }
 function showWinner(player){document.getElementById("winnerTitle").textContent=names[player]+" برنده شد";document.getElementById("winnerOverlay").classList.add("show");busy=false}
 function restart(){
-  pieces=[[0,0,0,0],[0,0,0,0]]; current=0; busy=false; lastDice=0; waitingSelect=false; pendingWinner=false;
+  pieces=[[0,0,0,0],[0,0,0,0]]; current=0; busy=false; lastDice=0; waitingSelect=false; pendingWinner=false; forceNextSix=false;
   document.getElementById("winnerOverlay").classList.remove("show");
   document.getElementById("challengeOverlay").classList.remove("show");
   setDicePips(5); document.getElementById("statusLine").textContent="";
