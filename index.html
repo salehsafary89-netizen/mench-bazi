@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#07070c">
+<meta name="theme-color" content="#0a0812">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,81 +13,230 @@
 <title>منچ رابطه‌ای</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
-:root{--bg:#07070c;--panel:#12121a;--line:#2a2a38;--text:#f0f0f5;--muted:#8a8a9a;--pink:#ff6b9d;--pink-dim:#ff6b9d33;--gold:#e8c47c;--blue:#6b9dff}
+:root{
+  --bg:#0a0812;
+  --panel:#14101c;
+  --panel2:#1c1628;
+  --line:#2e2640;
+  --text:#f4f0fa;
+  --muted:#9a90a8;
+  --pink:#ff5a9a;
+  --pink-soft:#ff5a9a28;
+  --gold:#f0c675;
+  --gold-dim:#f0c67522;
+  --blue:#7aa8ff;
+  --violet:#a78bfa;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:radial-gradient(ellipse at 50% -20%,#1a1225 0%,#07070c 55%);color:var(--text);font-family:'Vazirmatn',Tahoma,sans-serif;overflow-x:hidden}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 70% -10%, #2a1535 0%, transparent 45%),
+    radial-gradient(ellipse at 20% 100%, #151028 0%, transparent 40%),
+    #0a0812;
+  color:var(--text);
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  overflow-x:hidden;
+}
 button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
 .screen{display:none;min-height:100vh;width:min(480px,100%);margin:0 auto;padding:24px 18px;flex-direction:column}
 .screen.active{display:flex}
+
+/* License */
 #license-screen{justify-content:center;align-items:center;text-align:center;gap:28px}
-.logo-big{font-size:2.4em;font-weight:800;background:linear-gradient(135deg,#ff6b9d,#e8c47c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo-sub{color:var(--muted);font-size:.95em;margin-top:-18px}
-.license-box{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 22px;box-shadow:0 20px 50px #0006}
+.logo-big{
+  font-size:2.5em;font-weight:800;letter-spacing:-1px;
+  background:linear-gradient(135deg,#ff5a9a 10%,#f0c675 50%,#a78bfa 90%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 20px #ff5a9a33);
+}
+.logo-sub{color:var(--muted);font-size:.95em;margin-top:-14px}
+.license-box{
+  width:100%;background:linear-gradient(160deg,var(--panel),var(--panel2));
+  border:1px solid var(--line);border-radius:18px;padding:28px 22px;
+  box-shadow:0 24px 60px #0008, inset 0 1px 0 #ffffff08;
+}
 .license-box label{display:block;font-size:.9em;color:var(--muted);margin-bottom:10px;text-align:right}
-.license-box input{width:100%;padding:16px;border-radius:12px;border:1.5px solid var(--line);background:#0c0c12;color:var(--text);font-size:1.25em;text-align:center;letter-spacing:3px;font-family:inherit}
-.license-box input:focus{border-color:var(--pink);outline:none}
+.license-box input{
+  width:100%;padding:16px;border-radius:12px;border:1.5px solid var(--line);
+  background:#0c0a12;color:var(--text);font-size:1.25em;text-align:center;
+  letter-spacing:4px;font-family:inherit;transition:border-color .2s,box-shadow .2s;
+}
+.license-box input:focus{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink-soft);outline:none}
 .license-box input.error{border-color:#ff4d6a;animation:shake-x .4s ease}
 @keyframes shake-x{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-.btn-main{width:100%;margin-top:18px;padding:16px;border-radius:12px;background:linear-gradient(135deg,#ff6b9d,#ff8e53);color:#fff;font-weight:700;font-size:1.1em;box-shadow:0 8px 25px #ff6b9d44}
+.btn-main{
+  width:100%;margin-top:18px;padding:16px;border-radius:12px;
+  background:linear-gradient(135deg,#ff5a9a,#e8894a);
+  color:#fff;font-weight:700;font-size:1.1em;
+  box-shadow:0 10px 28px #ff5a9a40;
+  transition:transform .15s,box-shadow .15s;
+}
 .btn-main:active{transform:scale(.97)}
-.license-error{color:#ff6b8a;font-size:.85em;margin-top:12px;min-height:20px}
-#setup-screen h2{text-align:center;font-size:1.5em;margin-bottom:8px;background:linear-gradient(135deg,#ff6b9d,#e8c47c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.license-error{color:#ff7a9a;font-size:.85em;margin-top:12px;min-height:20px}
+
+/* Setup */
+#setup-screen h2{
+  text-align:center;font-size:1.5em;margin-bottom:8px;
+  background:linear-gradient(135deg,#ff5a9a,#f0c675);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
 .setup-sub{text-align:center;color:var(--muted);font-size:.9em;margin-bottom:28px}
-.setup-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+.setup-card{
+  background:linear-gradient(160deg,var(--panel),var(--panel2));
+  border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;
+}
 .setup-card .title{font-size:.95em;color:var(--muted);margin-bottom:12px}
-.setup-card input{width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line);background:#0c0c12;color:var(--text);font-size:1.05em;font-family:inherit;margin-bottom:14px}
+.setup-card input{
+  width:100%;padding:13px 14px;border-radius:10px;border:1.5px solid var(--line);
+  background:#0c0a12;color:var(--text);font-size:1.05em;font-family:inherit;margin-bottom:14px;
+}
 .setup-card input:focus{border-color:var(--pink);outline:none}
 .gender-row{display:flex;gap:10px}
-.gender-btn{flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--line);background:#0c0c12;color:var(--muted);font-weight:600}
-.gender-btn.selected-girl{border-color:var(--pink);background:var(--pink-dim);color:var(--pink)}
-.gender-btn.selected-boy{border-color:var(--blue);background:#6b9dff22;color:var(--blue)}
-.game-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-.game-header .brand{font-weight:800;font-size:1.15em;background:linear-gradient(135deg,#ff6b9d,#e8c47c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.game-header .badge{font-size:11px;color:var(--muted);border:1px solid var(--line);padding:5px 10px;border-radius:20px}
+.gender-btn{
+  flex:1;padding:12px;border-radius:10px;border:1.5px solid var(--line);
+  background:#0c0a12;color:var(--muted);font-weight:600;transition:.2s;
+}
+.gender-btn.selected-girl{border-color:var(--pink);background:var(--pink-soft);color:var(--pink)}
+.gender-btn.selected-boy{border-color:var(--blue);background:#7aa8ff22;color:var(--blue)}
+
+/* Game */
+.game-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+.game-header .brand{
+  font-weight:800;font-size:1.15em;
+  background:linear-gradient(135deg,#ff5a9a,#f0c675);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.game-header .badge{
+  font-size:11px;color:var(--gold);border:1px solid #5a4a30;
+  background:var(--gold-dim);padding:5px 12px;border-radius:20px;
+}
 .players{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.player-card{background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;transition:.25s}
-.player-card.active{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink),0 0 24px #ff6b9d33}
+.player-card{
+  background:linear-gradient(160deg,var(--panel),var(--panel2));
+  border:1.5px solid var(--line);border-radius:14px;padding:14px 12px;
+  text-align:center;transition:.25s;
+}
+.player-card.active{
+  border-color:var(--pink);
+  box-shadow:0 0 0 1px var(--pink),0 0 28px #ff5a9a30;
+}
 .player-card .name{font-size:.95em;font-weight:600;margin-bottom:4px}
 .player-card .gender-tag{font-size:11px;color:var(--muted);margin-bottom:8px}
 .player-card .pos{font-size:1.9em;font-weight:800;color:var(--pink)}
 .player-card .pos-label{font-size:11px;color:var(--muted)}
-.board-wrap{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:20px}
-.board{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
-.cell{aspect-ratio:1;border-radius:4px;background:#0d0d14;border:1px solid #1e1e28;display:flex;align-items:center;justify-content:center;font-size:8px;color:#4a4a5a;position:relative}
-.cell.special{background:linear-gradient(145deg,#1a1220,#12101a);border-color:#3a2a40;color:#c0a0b0;font-weight:600}
-.cell.special::after{content:"♥";position:absolute;top:1px;left:2px;font-size:7px;opacity:.5;color:var(--pink)}
-.token{width:11px;height:11px;border-radius:50%;position:absolute;box-shadow:0 0 8px currentColor}
-.token.p0{background:var(--pink);color:var(--pink)}
-.token.p1{background:var(--blue);color:var(--blue)}
+
+.board-wrap{
+  background:linear-gradient(160deg,var(--panel),#120e1a);
+  border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:20px;
+  box-shadow:inset 0 1px 0 #ffffff06;
+}
+.board{display:grid;grid-template-columns:repeat(10,1fr);gap:4px}
+.cell{
+  aspect-ratio:1;border-radius:5px;background:#100e16;
+  border:1px solid #221c30;display:flex;align-items:center;justify-content:center;
+  font-size:8px;color:#4a4460;position:relative;transition:background .2s,border-color .2s;
+}
+.cell.special{
+  background:linear-gradient(145deg,#1e1430,#16101f);
+  border-color:#4a3060;color:#c8a0d0;font-weight:600;
+}
+.cell.special::after{
+  content:"✦";position:absolute;top:2px;left:3px;font-size:7px;opacity:.55;color:var(--gold);
+}
+.cell.flash{
+  background:#2a1a40!important;border-color:var(--pink)!important;
+  box-shadow:0 0 12px #ff5a9a44;
+}
+.token{
+  width:13px;height:13px;border-radius:50%;position:absolute;z-index:2;
+  box-shadow:0 0 12px currentColor,0 0 4px #fff8;
+  transition:transform .15s ease;
+}
+.token.p0{background:linear-gradient(145deg,#ff7ab0,var(--pink));color:var(--pink)}
+.token.p1{background:linear-gradient(145deg,#9ec0ff,var(--blue));color:var(--blue)}
+.token.bounce{animation:token-bounce .18s ease}
+@keyframes token-bounce{0%{transform:scale(1)}40%{transform:scale(1.45)}100%{transform:scale(1)}}
+
 .dice-section{text-align:center;margin-bottom:16px}
-.turn-text{color:var(--muted);font-size:13px;margin-bottom:12px}
-.dice{width:96px;height:96px;margin:0 auto 14px;border-radius:18px;background:linear-gradient(145deg,#1e1e2a,#0c0c14);border:1.5px solid #3a3a4a;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;box-shadow:0 12px 30px #0008,inset 0 1px 0 #ffffff11}
-.dice.shake{animation:dice-shake .55s ease}
-@keyframes dice-shake{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-10deg) scale(1.05)}40%{transform:rotate(10deg) scale(1.05)}60%{transform:rotate(-6deg)}80%{transform:rotate(6deg)}}
-.btn-dice{width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,#ff6b9d,#ff8e53);color:#fff;font-weight:700;font-size:1.1em;box-shadow:0 8px 22px #ff6b9d40}
+.turn-text{color:var(--muted);font-size:13px;margin-bottom:14px}
+.dice{
+  width:110px;height:110px;margin:0 auto 16px;border-radius:22px;
+  background:
+    linear-gradient(145deg,#2a2438 0%,#14101c 100%);
+  border:2px solid #4a4060;
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;font-weight:800;line-height:1;
+  box-shadow:
+    0 16px 40px #000a,
+    inset 0 2px 0 #ffffff12,
+    inset 0 -2px 0 #0006;
+  color:var(--gold);
+  text-shadow:0 0 20px #f0c67555;
+  transition:transform .12s;
+}
+.dice.shake{animation:dice-shake .85s cubic-bezier(.36,.07,.19,.97)}
+@keyframes dice-shake{
+  0%{transform:rotate(0) scale(1)}
+  12%{transform:rotate(-16deg) scale(1.1)}
+  24%{transform:rotate(14deg) scale(1.08)}
+  36%{transform:rotate(-12deg) scale(1.12)}
+  48%{transform:rotate(11deg) scale(1.06)}
+  60%{transform:rotate(-8deg) scale(1.1)}
+  72%{transform:rotate(6deg) scale(1.04)}
+  84%{transform:rotate(-3deg) scale(1.05)}
+  100%{transform:rotate(0) scale(1)}
+}
+.btn-dice{
+  width:100%;padding:16px;border-radius:14px;
+  background:linear-gradient(135deg,#ff5a9a,#e8894a);
+  color:#fff;font-weight:700;font-size:1.12em;
+  box-shadow:0 10px 28px #ff5a9a45;
+  letter-spacing:.5px;
+}
 .btn-dice:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
-.note{text-align:center;color:#555566;font-size:11px;line-height:1.6;margin-top:8px}
-.overlay{position:fixed;inset:0;background:#05050add;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
+.note{text-align:center;color:#5a5470;font-size:11px;line-height:1.65;margin-top:10px}
+
+/* Overlays */
+.overlay{position:fixed;inset:0;background:#06040add;display:none;align-items:center;justify-content:center;padding:18px;z-index:50}
 .overlay.show{display:flex}
-.scroll{width:min(420px,100%);background:linear-gradient(180deg,#f5ebd8,#e8d9b8);color:#1a1510;border-radius:8px;padding:26px 22px;box-shadow:0 25px 60px #000a;transform-origin:top center;max-height:88vh;overflow-y:auto}
-.scroll.open{animation:unroll .75s cubic-bezier(.2,.8,.2,1)}
-@keyframes unroll{0%{transform:scaleY(.08);opacity:.3}70%{transform:scaleY(1.03);opacity:1}100%{transform:scaleY(1)}}
-.scroll .tag{font-size:11px;color:#7a6a50;letter-spacing:1px;margin-bottom:8px}
-.scroll h2{font-size:1.25em;margin-bottom:16px;color:#3a2a1a}
-.gender-box{background:rgba(0,0,0,.06);border-radius:8px;padding:12px 14px;margin-bottom:11px;border-right:3px solid transparent}
-.gender-box.girl{border-right-color:#ff6b9d}
-.gender-box.boy{border-right-color:#6b9dff}
+.scroll{
+  width:min(420px,100%);
+  background:linear-gradient(180deg,#f7eedc,#e6d4b0);
+  color:#1a1510;border-radius:10px;padding:28px 22px;
+  box-shadow:0 28px 70px #000c;transform-origin:top center;
+  max-height:88vh;overflow-y:auto;
+}
+.scroll.open{animation:unroll .8s cubic-bezier(.2,.8,.2,1)}
+@keyframes unroll{0%{transform:scaleY(.06);opacity:.25}65%{transform:scaleY(1.03);opacity:1}100%{transform:scaleY(1)}}
+.scroll .tag{font-size:11px;color:#7a6a50;letter-spacing:1.5px;margin-bottom:8px}
+.scroll h2{font-size:1.28em;margin-bottom:16px;color:#3a2a1a}
+.gender-box{background:rgba(0,0,0,.055);border-radius:8px;padding:13px 14px;margin-bottom:11px;border-right:3px solid transparent}
+.gender-box.girl{border-right-color:#ff5a9a}
+.gender-box.boy{border-right-color:#7aa8ff}
 .gender-box .label{font-size:12px;font-weight:700;margin-bottom:5px}
 .gender-box.girl .label{color:#c43a6a}
 .gender-box.boy .label{color:#3a6ac4}
 .gender-box .text{font-size:14.5px;line-height:1.85}
 .btn-close{width:100%;margin-top:16px;padding:13px;border-radius:8px;background:#1a1510;color:#f5ebd8;font-weight:600}
-.winner-box{width:min(400px,100%);background:linear-gradient(160deg,#16161f,#0c0c12);border:1px solid #3a3a4a;border-radius:18px;padding:40px 26px;text-align:center;box-shadow:0 30px 70px #000a;animation:win-in .6s ease}
-@keyframes win-in{from{opacity:0;transform:translateY(30px) scale(.94)}to{opacity:1;transform:none}}
+.winner-box{
+  width:min(400px,100%);
+  background:linear-gradient(160deg,#1a1525,#0c0a12);
+  border:1px solid #3a3050;border-radius:20px;padding:42px 26px;text-align:center;
+  box-shadow:0 30px 80px #000c;animation:win-in .6s ease;
+}
+@keyframes win-in{from{opacity:0;transform:translateY(28px) scale(.94)}to{opacity:1;transform:none}}
 .winner-box .emoji{font-size:3em;margin-bottom:12px}
-.winner-box h1{font-size:1.6em;margin-bottom:10px;background:linear-gradient(135deg,#ff6b9d,#e8c47c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.winner-box h1{
+  font-size:1.65em;margin-bottom:10px;
+  background:linear-gradient(135deg,#ff5a9a,#f0c675);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
 .winner-box p{color:var(--muted);line-height:1.8;margin-bottom:24px;font-size:.95em}
-.btn-restart{width:100%;padding:14px;border-radius:10px;border:1.5px solid #4a4a5a;background:transparent;color:var(--text);font-weight:600}
+.btn-restart{width:100%;padding:14px;border-radius:10px;border:1.5px solid #4a4060;background:transparent;color:var(--text);font-weight:600}
 </style>
 </head>
 <body>
@@ -147,7 +296,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
     <div class="dice" id="dice">⚄</div>
     <button class="btn-dice" id="rollBtn">پرتاب تاس</button>
   </div>
-  <div class="note">خانه‌های قلب‌دار = چالش ویژه<br>حکم‌ها تصادفی و بر اساس جنسیت هستند</div>
+  <div class="note">خانه‌های ✦ = چالش ویژه<br>هر قدم مهره حدود ۰.۸ ثانیه طول می‌کشد</div>
 </div>
 <div class="overlay" id="challengeOverlay">
   <div class="scroll" id="scroll">
@@ -167,31 +316,132 @@ button{font:inherit;color:inherit;cursor:pointer;border:none;outline:none}
   </div>
 </div>
 <script>
+const DICE_FACES=["","⚀","⚁","⚂","⚃","⚄","⚅"];
+const STEP_MS=800;
+
+let audioCtx=null;
+function ensureAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume()}
+function beep(freq,dur,type,vol){try{ensureAudio();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type||"square";o.frequency.value=freq;g.gain.value=vol||0.08;o.connect(g);g.connect(audioCtx.destination);o.start();g.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+dur);o.stop(audioCtx.currentTime+dur)}catch(e){}}
+function sfxDiceTick(){beep(170+Math.random()*140,0.035,"square",0.055)}
+function sfxDiceStop(){beep(300,0.14,"triangle",0.11)}
+function sfxStep(){beep(400,0.06,"square",0.045)}
+function sfxChallenge(){beep(520,0.09,"sine",0.07);setTimeout(()=>beep(700,0.11,"sine",0.06),100)}
+function sfxWin(){[523,659,784,1046].forEach((f,i)=>setTimeout(()=>beep(f,0.16,"sine",0.08),i*130))}
+
 const LICENSE_CODE="0970185839";
 function normalizeDigits(str){const p="۰۱۲۳۴۵۶۷۸۹",a="٠١٢٣٤٥٦٧٨٩";return str.replace(/[۰-۹]/g,d=>p.indexOf(d)).replace(/[٠-٩]/g,d=>a.indexOf(d)).replace(/\D/g,"")}
 document.getElementById("licenseBtn").addEventListener("click",checkLicense);
 document.getElementById("licenseInput").addEventListener("keydown",e=>{if(e.key==="Enter")checkLicense()});
-function checkLicense(){const input=document.getElementById("licenseInput"),err=document.getElementById("licenseError"),val=normalizeDigits(input.value.trim());if(val===LICENSE_CODE){err.textContent="";document.getElementById("license-screen").classList.remove("active");document.getElementById("setup-screen").classList.add("active")}else{input.classList.add("error");err.textContent="کد لایسنس نادرست است";setTimeout(()=>input.classList.remove("error"),400)}}
+function checkLicense(){ensureAudio();const input=document.getElementById("licenseInput"),err=document.getElementById("licenseError"),val=normalizeDigits(input.value.trim());if(val===LICENSE_CODE){err.textContent="";document.getElementById("license-screen").classList.remove("active");document.getElementById("setup-screen").classList.add("active")}else{input.classList.add("error");err.textContent="کد لایسنس نادرست است";setTimeout(()=>input.classList.remove("error"),400)}}
+
 const genders=["girl","boy"];
 document.querySelectorAll(".gender-btn").forEach(btn=>{btn.addEventListener("click",()=>{const p=+btn.dataset.player,g=btn.dataset.gender;genders[p]=g;document.querySelectorAll(`.gender-btn[data-player="${p}"]`).forEach(b=>b.classList.remove("selected-girl","selected-boy"));btn.classList.add(g==="girl"?"selected-girl":"selected-boy")})});
-document.getElementById("startBtn").addEventListener("click",()=>{const n1=document.getElementById("name1").value.trim()||"بازیکن ۱",n2=document.getElementById("name2").value.trim()||"بازیکن ۲";names[0]=n1;names[1]=n2;document.getElementById("displayName0").textContent=n1;document.getElementById("displayName1").textContent=n2;document.getElementById("displayGender0").textContent=genders[0]==="girl"?"دختر":"پسر";document.getElementById("displayGender1").textContent=genders[1]==="girl"?"دختر":"پسر";document.getElementById("setup-screen").classList.remove("active");document.getElementById("game-screen").classList.add("active");render()});
+document.getElementById("startBtn").addEventListener("click",()=>{ensureAudio();const n1=document.getElementById("name1").value.trim()||"بازیکن ۱",n2=document.getElementById("name2").value.trim()||"بازیکن ۲";names[0]=n1;names[1]=n2;document.getElementById("displayName0").textContent=n1;document.getElementById("displayName1").textContent=n2;document.getElementById("displayGender0").textContent=genders[0]==="girl"?"دختر":"پسر";document.getElementById("displayGender1").textContent=genders[1]==="girl"?"دختر":"پسر";document.getElementById("setup-screen").classList.remove("active");document.getElementById("game-screen").classList.add("active");render()});
+
 const girlChallenges={soft:["۳۰ ثانیه فقط به پسر نگاه کن و لبخند بزن، بعد یه تعریف کوچیک ازش بگو.","دستت رو آروم روی شونه یا بازوی پسر بذار و ۱۵ ثانیه نگه دار.","یه بوسه خیلی ملایم روی گونه یا پیشانی پسر بزن.","دستات رو دور کمر پسر ببر و یه بوسه آروم روی لبش بزن.","دستت رو زیر لباس پسر روی سینه‌ش یا شکمش ببر و آروم نوازش کن."],medium:["یکی از دکمه‌های لباس پسر رو باز کن و جای لخت‌شده رو ببوس.","با دستت قسمت جنسی پسر رو از روی لباس نوازش کن تا سفت بشه.","لباس بالای تنت رو دربیار و بذار پسر سینه‌هات رو ببینه و نوازش کنه.","روی پای پسر بشین و بدنت رو بهش بمال (هنوز با لباس).","با زبونت گردن و ترقوه پسر رو لیس بزن و آروم گاز بگیر."],hard:["با دست یا دهنت آلت پسر رو تا لب‌لبه ارگاسم ببر، ولی نذار تموم کنه.","لباس زیرت رو دربیار و بذار پسر با انگشت یا زبون تحریک‌ت کنه.","روی پسر سوار شو (بدون دخول) و بدنت رو به آلتش بمال.","بذار پسر کنترل کامل بدنت رو برای ۲ دقیقه به دست بگیره (با رضایت).","آلت پسر رو بین سینه‌هات بذار و بالا پایین ببر."],final:["رابطه کامل. هر پوزیشنی که دوست داری انتخاب کن و بذار پسر گایت کنه.","بذار پسر از پشت یا روبرو کامل داخل بشه و با سرعتی که دوست داره پیش بره.","خودت رو کامل در اختیار پسر بذار و بذار هر جور که می‌خواد تموم کنه."]};
 const boyChallenges={soft:["۳۰ ثانیه فقط به دختر نگاه کن و لبخند بزن، بعد یه تعریف کوچیک ازش بگو.","دستت رو آروم روی شونه یا بازوی دختر بذار و ۱۵ ثانیه نگه دار.","یه بوسه خیلی ملایم روی گونه یا پیشانی دختر بزن.","دستات رو دور کمر دختر ببر و یه بوسه آروم روی لبش بزن.","دستت رو زیر لباس دختر روی سینه‌ش یا شکمش ببر و آروم نوازش کن."],medium:["یکی از دکمه‌های لباس دختر رو باز کن و جای لخت‌شده رو ببوس.","با دستت سینه‌های دختر رو از روی لباس نوازش کن و آروم فشار بده.","لباس بالای تنت رو دربیار و بذار دختر بدنت رو لمس کنه.","دختر رو بغل کن و بدنت رو محکم بهش بچسبون.","با زبونت گردن و گوش دختر رو لیس بزن و آروم گاز بگیر."],hard:["با دست یا دهنت قسمت جنسی دختر رو تا لب‌لبه ارگاسم ببر، ولی نذار تموم کنه.","لباس زیر دختر رو دربیار و با انگشت یا زبون تحریک‌ش کن.","دختر رو روی خودت بنشون (بدون دخول) و بدنش رو به آلتت بمال.","برای ۲ دقیقه کنترل کامل بدن دختر رو به دست بگیر (با رضایت).","آلتت رو بین ران‌های دختر بذار و آروم بمال."],final:["رابطه کامل. هر پوزیشنی که دوست داری انتخاب کن و دختر رو کامل بگای.","از پشت یا روبرو کامل داخل شو و با سرعتی که هر دو دوست دارید پیش برو.","دختر رو کامل در اختیار بگیر و هر جور که می‌خوای تموم کن."]};
 function getLevel(h){if(h<=30)return"soft";if(h<=60)return"medium";if(h<=90)return"hard";return"final"}
 function pickRandom(a){return a[Math.floor(Math.random()*a.length)]}
-let names=["بازیکن ۱","بازیکن ۲"],pos=[0,0],current=0,rolling=false,pendingWinner=false;
+
+let names=["بازیکن ۱","بازیکن ۲"],pos=[0,0],current=0,busy=false,pendingWinner=false;
 const boardEl=document.getElementById("board");
 for(let i=1;i<=100;i++){const c=document.createElement("div");c.className="cell"+(i%10===0?" special":"");c.id="cell-"+i;c.textContent=i;boardEl.appendChild(c)}
-function render(){document.querySelectorAll(".token").forEach(t=>t.remove());pos.forEach((p,i)=>{if(p>0){const cell=document.getElementById("cell-"+p);if(cell){const t=document.createElement("div");t.className="token p"+i;cell.appendChild(t)}}document.getElementById("pos"+i).textContent=p;document.getElementById("card"+i).classList.toggle("active",i===current&&!rolling)});document.getElementById("turnText").textContent="نوبت "+names[current]}
-function rollDice(){if(rolling)return;rolling=true;const dice=document.getElementById("dice"),btn=document.getElementById("rollBtn");btn.disabled=true;dice.classList.remove("shake");void dice.offsetWidth;dice.classList.add("shake");let ticks=0;const timer=setInterval(()=>{dice.textContent=Math.floor(Math.random()*6)+1;ticks++;if(ticks>=9){clearInterval(timer);const value=Math.floor(Math.random()*6)+1;dice.textContent=value;pos[current]=Math.min(100,pos[current]+value);render();setTimeout(()=>{rolling=false;btn.disabled=false;if(pos[current]===100){pendingWinner=true;showChallenge(100);return}if(pos[current]%10===0)showChallenge(pos[current]);else{current=1-current;render()}},320)}},60)}
-function showChallenge(house){const level=getLevel(house);document.getElementById("challengeTitle").textContent="حکم خونه "+house;document.getElementById("girlText").textContent=pickRandom(girlChallenges[level]);document.getElementById("boyText").textContent=pickRandom(boyChallenges[level]);const o=document.getElementById("challengeOverlay"),s=document.getElementById("scroll");o.classList.add("show");s.classList.remove("open");void s.offsetWidth;s.classList.add("open")}
-function closeChallenge(){document.getElementById("challengeOverlay").classList.remove("show");if(pendingWinner){showWinner(current);pendingWinner=false;return}current=1-current;render()}
-function showWinner(player){document.getElementById("winnerTitle").textContent=names[player]+" برنده شد";document.getElementById("winnerOverlay").classList.add("show")}
-function restart(){pos=[0,0];current=0;pendingWinner=false;document.getElementById("winnerOverlay").classList.remove("show");document.getElementById("challengeOverlay").classList.remove("show");document.getElementById("dice").textContent="⚄";document.getElementById("game-screen").classList.remove("active");document.getElementById("setup-screen").classList.add("active")}
+
+function render(){
+  document.querySelectorAll(".token").forEach(t=>t.remove());
+  pos.forEach((p,i)=>{
+    if(p>0){const cell=document.getElementById("cell-"+p);if(cell){const t=document.createElement("div");t.className="token p"+i;cell.appendChild(t)}}
+    document.getElementById("pos"+i).textContent=p;
+    document.getElementById("card"+i).classList.toggle("active",i===current&&!busy);
+  });
+  document.getElementById("turnText").textContent="نوبت "+names[current];
+}
+
+function placeTokenAt(player,house){
+  document.querySelectorAll(".token.p"+player).forEach(t=>t.remove());
+  if(house<=0)return;
+  const cell=document.getElementById("cell-"+house);
+  if(!cell)return;
+  const t=document.createElement("div");
+  t.className="token p"+player+" bounce";
+  cell.appendChild(t);
+  cell.classList.add("flash");
+  setTimeout(()=>cell.classList.remove("flash"),180);
+}
+
+async function moveStepByStep(player,steps){
+  for(let i=0;i<steps;i++){
+    if(pos[player]>=100)break;
+    pos[player]++;
+    placeTokenAt(player,pos[player]);
+    document.getElementById("pos"+player).textContent=pos[player];
+    sfxStep();
+    await new Promise(r=>setTimeout(r,STEP_MS));
+  }
+}
+
+async function rollDice(){
+  if(busy)return;
+  busy=true;ensureAudio();
+  const dice=document.getElementById("dice"),btn=document.getElementById("rollBtn");
+  btn.disabled=true;
+  dice.classList.remove("shake");void dice.offsetWidth;dice.classList.add("shake");
+
+  let ticks=0;
+  const tickTimer=setInterval(()=>{
+    const n=Math.floor(Math.random()*6)+1;
+    dice.textContent=DICE_FACES[n];
+    sfxDiceTick();
+    ticks++;
+    if(ticks>=14)clearInterval(tickTimer);
+  },58);
+
+  await new Promise(r=>setTimeout(r,880));
+
+  const value=Math.floor(Math.random()*6)+1;
+  dice.textContent=DICE_FACES[value];
+  sfxDiceStop();
+
+  const remaining=100-pos[current];
+  const steps=Math.min(value,remaining);
+  if(steps>0)await moveStepByStep(current,steps);
+
+  if(pos[current]===100){pendingWinner=true;sfxChallenge();showChallenge(100);return}
+  if(pos[current]%10===0){sfxChallenge();showChallenge(pos[current]);return}
+
+  current=1-current;busy=false;btn.disabled=false;render();
+}
+
+function showChallenge(house){
+  const level=getLevel(house);
+  document.getElementById("challengeTitle").textContent="حکم خونه "+house;
+  document.getElementById("girlText").textContent=pickRandom(girlChallenges[level]);
+  document.getElementById("boyText").textContent=pickRandom(boyChallenges[level]);
+  const o=document.getElementById("challengeOverlay"),s=document.getElementById("scroll");
+  o.classList.add("show");s.classList.remove("open");void s.offsetWidth;s.classList.add("open");
+}
+function closeChallenge(){
+  document.getElementById("challengeOverlay").classList.remove("show");
+  if(pendingWinner){sfxWin();showWinner(current);pendingWinner=false;return}
+  current=1-current;busy=false;document.getElementById("rollBtn").disabled=false;render();
+}
+function showWinner(player){
+  document.getElementById("winnerTitle").textContent=names[player]+" برنده شد";
+  document.getElementById("winnerOverlay").classList.add("show");busy=false;
+}
+function restart(){
+  pos=[0,0];current=0;busy=false;pendingWinner=false;
+  document.getElementById("winnerOverlay").classList.remove("show");
+  document.getElementById("challengeOverlay").classList.remove("show");
+  document.getElementById("dice").textContent="⚄";
+  document.getElementById("rollBtn").disabled=false;
+  document.getElementById("game-screen").classList.remove("active");
+  document.getElementById("setup-screen").classList.add("active");
+}
 document.getElementById("rollBtn").addEventListener("click",rollDice);
 document.getElementById("closeBtn").addEventListener("click",closeChallenge);
 document.getElementById("restartBtn").addEventListener("click",restart);
-if("serviceWorker" in navigator){navigator.serviceWorker.register("./sw.js").catch(()=>{})}
+if("serviceWorker" in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{});
 </script>
 </body>
 </html>
